@@ -44,10 +44,12 @@ img{
 .perros, .gatos{
     display: flex;
     flex-direction: column;
+
 }
 .perros-container, .gatos-container {
     display: flex;
     gap: 5px;
+    flex-wrap: wrap;
 }
 .perros div, .gatos div {
     text-align: center;
@@ -67,4 +69,27 @@ img{
 
 .fem{
     background-color: #a85b5b;
+}
+
+
+@media screen and (max-width: 768px) {
+    img{
+        width: 65px;
+        height: 65px;
+    }
+    h1{
+        font-size: 22px;
+    }
+    h2{
+        font-size: 16px;
+    }
+    h3{
+        font-size: 12px;
+    }
+    .genero{
+        font-size: 12px;
+        width: 10px;
+        height: 10px;
+        margin-right: 1px;
+    }
 }
