@@ -84,12 +84,14 @@ img{
         font-size: 16px;
     }
     h3{
-        font-size: 12px;
+        font-size: 10px;
+    }
+    .perros-container, .gatos-container{
+        gap: 15px;
     }
     .genero{
         font-size: 12px;
         width: 10px;
-        height: 10px;
         margin-right: 1px;
     }
 }
