@@ -24,20 +24,20 @@ class Perro{
 // GATOS
 
 const gatos = [
-    new Gato('canela','adulta', 'cantar, lamerse','no esterilizada'),
+    new Gato('canela','adulta', 'cantar y lamerse','no esterilizada'),
     new Gato('bruno','cachorro', 'dormir y mirar a la nada','esterilizado'),
-    new Gato('princesa','adulta', 'lamerse, mirar con altanería','esterilizada'),
-    new Gato('mila','anciana', 'dormir, recibir caricias','no esterilizada'),
-    new Gato('hamborgueso','cachorro', 'comer, jugar con ovillos de lana','esterilizado')
+    new Gato('princesa','adulta', 'lamerse y mirar con altanería','esterilizada'),
+    new Gato('mila','anciana', 'dormir y recibir caricias','no esterilizada'),
+    new Gato('hamborgueso','cachorro', 'comer y jugar con ovillos de lana','esterilizado')
 ]
 
 // PERROS
 const perros = [
-    new Perro('pompon','cachorro', 'jugar, saltar',' esterilizada'),
+    new Perro('pompon','cachorro', 'jugar y saltar',' esterilizada'),
     new Perro('felipe','anciano', 'dormir y comer','no esterilizado'),
-    new Perro('firulais','anciano', 'correr, cazar','esterilizado'),
-    new Perro('goliat','adulto', 'aprender trucos, pasear','no esterizado'),
-    new Perro('olivia','cachorro', 'pasear, olfatear, ladrar','esterilizada')
+    new Perro('firulais','anciano', 'correr y cazar','esterilizado'),
+    new Perro('goliat','adulto', 'aprender trucos y pasear','no esterizado'),
+    new Perro('olivia','cachorro', 'pasear, olfatear y perseguir al cartero','esterilizada')
 ]
 
 // Para almacenar las mascotas adoptadas
@@ -62,7 +62,12 @@ while (continuarAdoptando) {
         // Verificar si el gato existe en la lista
         if (indexGato !== -1) {
             let gatoAdoptado = gatos[indexGato];
-            alert(`¡Felicidades! Has adoptado a ${gatoAdoptado.nombre}. Asegúrate de alimentarlo, cepillarlo, y quererlo como se merece!`);
+            alert(`
+            ¡FELICIDADES! 
+            Has adoptado a ${gatoAdoptado.nombre}.
+            Recuerda que sus hobbies son:
+            ${gatoAdoptado.hobbies}.
+            No lo olvides!`);
             
             // Añadir el gato adoptado a la lista de adopciones
             listaAdopcion.push(gatoAdoptado.nombre);
@@ -85,8 +90,12 @@ while (continuarAdoptando) {
         // Verificar si el perro existe
         if (indexPerro !== -1) {
             let perroAdoptado = perros[indexPerro];
-            alert(`¡Felicidades! Has adoptado a ${perroAdoptado.nombre}.
-            Sácalo a pasear, báñalo y ¡Asegurate de que no rompa nada!`);
+            alert(`
+            ¡FELICIDADES! 
+            Has adoptado a ${gatoAdoptado.nombre}.
+            Recuerda que sus hobbies son:
+            ${gatoAdoptado.hobbies}.
+            No lo olvides!`);
             
             // Añadir el perro adoptado a la lista
             listaAdopcion.push(perroAdoptado.nombre);
