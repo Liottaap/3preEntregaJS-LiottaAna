@@ -65,6 +65,7 @@ while (continuarAdoptando) {
             alert(`
             ¡FELICIDADES! 
             Has adoptado a ${gatoAdoptado.nombre}.
+            Este gato está: ${gatoAdoptado.esterilizado}
             Recuerda que sus hobbies son:
             ${gatoAdoptado.hobbies}.
             No lo olvides!`);
@@ -92,9 +93,10 @@ while (continuarAdoptando) {
             let perroAdoptado = perros[indexPerro];
             alert(`
             ¡FELICIDADES! 
-            Has adoptado a ${gatoAdoptado.nombre}.
+            Has adoptado a ${perroAdoptado.nombre}.
+            Este perro está: ${perroAdoptado.esterilizado}
             Recuerda que sus hobbies son:
-            ${gatoAdoptado.hobbies}.
+            ${perroAdoptado.hobbies}.
             No lo olvides!`);
             
             // Añadir el perro adoptado a la lista

@@ -11,57 +11,92 @@
     <h1>CENTRO DE MASCOTAS PATITAS CONTENTAS</h1>
 
     <section class="mascotas-container">
-        <div class="perros">
-            <h2>PERROS</h2>
-            <div class="perros-container">
-                <div>
-                    <img src="./img/perro_1.jpg" alt="">
-                    <h3><span class="genero fem">​♀️​</span> Olivia</h3>
-                </div>
-                <div>
-                    <img src="./img/perro_2.jpg" alt="">
-                    <h3><span class="genero masc">♂️​</span>Goliat</h3>
-                </div>
-                <div>
+        <form action="/procesar-adopcion" method="POST">
+            <div class="perros">
+                <h2>PERROS</h2>
+                <div class="perros-container">
+                    <div class="mascota">
+                        <img src="./img/perro_1.jpg" alt="">
+                        <h3><span class="genero fem">​♀️​</span> Olivia</h3>
+                        <label>
+                            <input class="checkbox" type="checkbox" name="adoptar[]" value="Luna">
+                        </label>
+                    </div>
+                    <div class="mascota">
+                        <img src="./img/perro_2.jpg" alt="">
+                        <h3><span class="genero masc">♂️​</span>Goliat</h3>
+                        <label>
+                            <input class="checkbox" type="checkbox" name="adoptar[]" value="Luna">
+                        </label>
+                    </div>
+                    <div class="mascota">
                     <img src="./img/perro_3.jpg" alt="">
                     <h3><span class="genero fem">​♀️​</span>Pompón</h3>
-                </div>
-                <div>
-                    <img src="./img/perro_4.jpg" alt="">
-                    <h3><span class="genero masc">♂️​</span>Felipe</h3>
-                </div>
-                <div>
-                    <img src="./img/perro_5.jpg" alt="">
-                    <h3><span class="genero masc">♂️​</span>Firulais</h3>
+                    <label>
+                        <input class="checkbox" type="checkbox" name="adoptar[]" value="Luna">
+                    </label>
+                    </div>
+                    <div class="mascota">
+                        <img src="./img/perro_4.jpg" alt="">
+                        <h3><span class="genero masc">♂️​</span>Felipe</h3>
+                        <label>
+                            <input class="checkbox" type="checkbox" name="adoptar[]" value="Luna">
+                        </label>
+                    </div>
+                    <div class="mascota">
+                        <img src="./img/perro_5.jpg" alt="">
+                        <h3><span class="genero masc">♂️​</span>Firulais</h3>
+                        <label>
+                            <input class="checkbox" type="checkbox" name="adoptar[]" value="Luna">
+                        </label>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <div class="gatos">
-            <h2>GATOS</h2>
-            <div class="gatos-container">
-                <div>
-                    <img src="./img/gato_1.jpg" alt="">
-                    <h3><span class="genero masc">♂️​</span>Hamborgueso</h3>
-                </div>
-                <div>
-                    <img src="./img/gato_2.jpg" alt="">
-                    <h3><span class="genero masc">♂️​</span>Bruno</h3>
-                </div>
-                <div>
-                    <img src="./img/gato_3.jpg" alt="">
-                    <h3><span class="genero fem">​♀️​</span>Mila</h3>
-                </div>
-                <div>
-                    <img src="./img/gato_4.jpg" alt="">
-                    <h3><span class="genero fem">​♀️​</span>Canela</h3>
-                </div>
-                <div>
-                    <img src="./img/gato_5.jpg" alt="">
-                    <h3><span class="genero fem">​♀️​</span>Princesa</h3>
+            <div class="gatos">
+                <h2>GATOS</h2>
+                <div class="gatos-container">
+                    <div class="mascota">
+                        <img src="./img/gato_1.jpg" alt="">
+                        <h3><span class="genero masc">♂️​</span>Hamborgueso</h3>
+                        <label>
+                            <input class="checkbox" type="checkbox" name="adoptar[]" value="Luna">
+                        </label>
+                    </div>
+                    <div class="mascota">
+                        <img src="./img/gato_2.jpg" alt="">
+                        <h3><span class="genero masc">♂️​</span>Bruno</h3>
+                        <label>
+                            <input class="checkbox" type="checkbox" name="adoptar[]" value="Luna">
+                        </label>
+                    </div>
+                    <div class="mascota">
+                        <img src="./img/gato_3.jpg" alt="">
+                        <h3><span class="genero fem">​♀️​</span>Mila</h3>
+                        <label>
+                            <input class="checkbox" type="checkbox" name="adoptar[]" value="Luna">
+                        </label>
+                    </div>
+                    <div class="mascota">
+                        <img src="./img/gato_4.jpg" alt="">
+                        <h3><span class="genero fem">​♀️​</span>Canela</h3>
+                        <label>
+                            <input class="checkbox" type="checkbox" name="adoptar[]" value="Luna">
+                        </label>
+                    </div>
+                    <div class="mascota">
+                        <img src="./img/gato_5.jpg" alt="">
+                        <h3><span class="genero fem">​♀️​</span>Princesa</h3>
+                        <label>
+                            <input class="checkbox" type="checkbox" name="adoptar[]" value="Luna">
+                        </label>
+                    </div>
                 </div>
             </div>
-        </div>
+
+            <button type="submit">Adoptar Mascota</button>
+        </form>
+
     </section>
 
 </body>
