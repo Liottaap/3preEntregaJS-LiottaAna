@@ -42,11 +42,8 @@ function cerrarModal() {
     document.getElementById('modal').style.display = 'none';
 }
 
-function cerrarModal() {
-    document.getElementById('modal').style.display = 'none';
-}
 
-// Asigna el evento de clic al botón de cerrar
+// Evento de clic al botón de cerrar
 document.getElementById('modal-cerrar').addEventListener('click', cerrarModal);
 
 /* // Para almacenar las mascotas adoptadas

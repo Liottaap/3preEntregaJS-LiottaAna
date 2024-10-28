@@ -68,12 +68,13 @@
                 </div>
             </div>
     
-            <a id="carrito" class="carrito">
+            <a id="modal-abrir-ca" class="carrito">
                 <span class="carrito-img sacudir-carrito"></span>
                 <p>Firmar papeles</p>
             </a>
         </section>
 
+        <!-- MODAL INFO-MASCOTA - AÑADIR AL CARRITO  -->
         <section id="modal" class="modal">
             <div id='modal-content' class="modal-content">
                 <span id="modal-cerrar" class="modal-cerrar">x</span>
@@ -91,6 +92,62 @@
                     <button id="modal-adoptar" class="modal-adoptar">Adoptar</button>
                 </div>
             </div>
+        </section>
+
+        <!-- MODAL CARRITO  -->
+        <section id="modal-ca" class="modal">
+            <div class="modal-content modal-content-ad">
+                <span id="modal-cerrar-ca" class="modal-cerrar">x</span>
+                <div>
+                    <ul class="lista-ad-container">
+                        <!-- lista de mascotas adoptadas -->
+                        <li class="lista-ad">
+                            <img id="modal-img-ad" src="./img/gato_1.jpg" alt="">
+                            <div>
+                                <h3 id="modal-name-ad">Anvorgueso</h3>
+                                <a id="modal-eliminar" href>Quitar mascota</a>
+                            </div>
+                        </li>
+                    </ul>
+                    <form>
+                        <label for="nombre">Nombre
+                            <input type="text" id="nombre" name="nombre">
+                        </label>
+                        <label for="nombre">Apellido
+                            <input type="text" id="apellido" name="nombre">
+                        </label>
+                        <label for="nombre">E-mail
+                            <input type="email" id="email" name="email" placeholder="ejemplo@email.com">
+                        </label>
+                        <label for="nombre">Teléfono
+                            <input type="tel" name="tel" id="tel">
+                        </label>
+                        <label for="direccion">Direccion
+                            <input type="text" name="direccion" id="direccion">
+                        </label>
+                    </form>
+                </div>
+                <div class="terminos">
+                    <input type="checkbox">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam illum repudiandae quibusdam ad praesentium quae, corrupti accusantium maiores, fugit saepe autem porro facere nesciunt, quam animi omnis. Repellendus, aperiam quibusdam?</p>
+                </div>
+                <button id="modal-firmar" class="modal-adoptar">Firmar</button>
+            </div>
+        </section>
+
+        <!-- MODAL MENSAJE FINAL -->
+        <section id="modal-mensaje-final" class="modal">
+            <div class="modal-content mensaje-final">
+                <div>
+                    <h3 id="titulo-final">¡FELICIDADES!</h3>
+                    <p id="texto-final"></p>
+                    <p>Se te enviará por correo electrónico el contrato de adopción</p>
+                    <p id="saludo-name"></p>
+                </div>
+
+                <button id="modal-volver-inicio" class="modal-adoptar">Volver al inicio</button>
+            </div>
+
         </section>
     </main>
 
