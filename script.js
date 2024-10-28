@@ -1,46 +1,55 @@
-// Bienvenida
-alert(`Bienvenido/a al CENTRO DE MASCOTAS PATITAS CONTENTAS. 
-Muchas mascotas están esperando conseguir un hogar y nuevas oportunidades. 
-Afortunadamente contamos con 5 amigos gatunos y 5 perrunos disponibles para que les brindes esa oportunidad.`);
-
-// Información de las mascotas
-class Gato{
-    constructor(nombre, edad, hobbies, esterilizado){
-        this.nombre = nombre;
-        this.edad = edad;
-        this.hobbies = hobbies;
-        this.esterilizado = esterilizado; 
-    }
+/* Objeto mascotas */
+const Mascotas = {
+    //Perros
+    'perro-1': {nombre: 'Olivia',img:'./img/perro_1.jpg',genero:'hembra',edad:'cachorro',hobbies: 'A este adorable peludo le gusta pasear, olfatear y perseguir al cartero',esterilizado: 'esterilizada'},
+    'perro-2': {nombre: 'Goliat',img:'./img/perro_2.jpg',genero:'macho',edad:'adulto', hobbies:'A este adorable peludo le gusta aprender trucos y pasear',esterilizado: 'no esterizado'},
+    'perro-3': {nombre: 'Pomóon',img:'./img/perro_3.jpg',genero:'hembra',edad:'cachorro', hobbies:'A este adorable peludo le gusta jugar y saltar',esterilizado: 'esterilizada'},
+    'perro-4': {nombre: 'Felipe',img:'./img/perro_4.jpg',genero:'macho',edad:'anciano', hobbies:'A este adorable peludo le gusta dormir y comer',esterilizado:'no esterilizado'},
+    'perro-5': {nombre: 'Firulais',img:'./img/perro_5.jpg',genero:'macho',edad:'anciano', hobbies:'A este adorable peludo le gusta correr y cazar',esterilizado: 'esterilizado'},
+    //Gatos
+    'gato-1' : {nombre:'Anvorgueso',img:'./img/gato_1.jpg' , genero:'macho' ,edad:'cachorro' ,hobbies: 'A este adorable peludo le gusta comer y jugar con ovillos de lana', esterilizado:'esterilizado'},
+    'gato-2' : {nombre:'Bruno',img:'./img/gato_2.jpg',genero:'macho', edad:'cachorro',hobbies: 'A este adorable peludo le gusta dormir y mirar a la nada',esterilizado:'esterilizado'},
+    'gato-3' : {nombre:'Mila',img:'./img/gato_3.jpg' ,genero:'hembra',edad:'anciana', hobbies:'A este adorable peludo le gusta dormir y recibir caricias',esterilizado:'no esterilizada'},
+    'gato-4' : {nombre:'Canela', img:'./img/gato_4.jpg' ,genero:'hembra',edad:'adulta',hobbies: 'A este adorable peludo le gusta cantar y lamerse',esterilizado:'no esterilizada'},
+    'gato-5' : {nombre:'Princesa', img:'./img/gato_5.jpg' ,genero:'hembra',edad:'adulta', hobbies:'A este adorable peludo le gusta lamerse y mirar con altanería',esterilizado:'esterilizada'},
 }
 
-class Perro{
-    constructor(nombre, edad, hobbies, esterilizado){
-        this.nombre = nombre;
-        this.edad = edad;
-        this.hobbies = hobbies;
-        this.esterilizado = esterilizado; 
-    }
+/* Modal */
+
+function abrirModal(mascotaId) {
+    const mascota = Mascotas[mascotaId];
+    document.getElementById('modal-name').innerText =  mascota.nombre;
+    document.getElementById('modal-img').src = mascota.img;
+    document.getElementById('modal-genero').innerText = `Genero: ${mascota.genero}`;
+    document.getElementById('modal-edad').innerText = `Edad: ${mascota.edad}`;
+    document.getElementById('modal-esterilizado').innerText = `Estado: ${mascota.esterilizado}`;
+    document.getElementById('modal-hobbies').innerText = `Hobbies: ${mascota.hobbies}`;
+
+    // Mostrar el modal
+    document.getElementById('modal').style.display = 'flex';
 }
-// GATOS
 
-const gatos = [
-    new Gato('canela','adulta', 'cantar y lamerse','no esterilizada'),
-    new Gato('bruno','cachorro', 'dormir y mirar a la nada','esterilizado'),
-    new Gato('princesa','adulta', 'lamerse y mirar con altanería','esterilizada'),
-    new Gato('mila','anciana', 'dormir y recibir caricias','no esterilizada'),
-    new Gato('hamborgueso','cachorro', 'comer y jugar con ovillos de lana','esterilizado')
-]
+//Evento para hacer click en el div de la mascota
 
-// PERROS
-const perros = [
-    new Perro('pompon','cachorro', 'jugar y saltar',' esterilizada'),
-    new Perro('felipe','anciano', 'dormir y comer','no esterilizado'),
-    new Perro('firulais','anciano', 'correr y cazar','esterilizado'),
-    new Perro('goliat','adulto', 'aprender trucos y pasear','no esterizado'),
-    new Perro('olivia','cachorro', 'pasear, olfatear y perseguir al cartero','esterilizada')
-]
+const mascotasElements = document.querySelectorAll('.mascota');
+mascotasElements.forEach(mascota => {
+    mascota.addEventListener('click', () => abrirModal(mascota.id));
+});
 
-// Para almacenar las mascotas adoptadas
+
+// Función para cerrar el modal
+function cerrarModal() {
+    document.getElementById('modal').style.display = 'none';
+}
+
+function cerrarModal() {
+    document.getElementById('modal').style.display = 'none';
+}
+
+// Asigna el evento de clic al botón de cerrar
+document.getElementById('modal-cerrar').addEventListener('click', cerrarModal);
+
+/* // Para almacenar las mascotas adoptadas
 let listaAdopcion = []; 
 
 //Para el ciclo while
@@ -128,4 +137,4 @@ while (continuarAdoptando) {
         continuarAdoptando = false;
         break;
     }
-}
+} */

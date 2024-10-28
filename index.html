@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Adopción de mascotas</title>
     <link rel="stylesheet" href="./styles.css">
-    <!-- <script src="script.js" defer></script> -->
+    <script src="script.js" defer></script>
 </head>
 <body>
     <header><h1>CENTRO DE MASCOTAS PATITAS CONTENTAS</h1></header>
@@ -19,23 +19,23 @@
             <div class="perros">
                 <h2>PERROS</h2>
                 <div class="perros-container">
-                    <div class="mascota">
+                    <div id="perro-1" class="mascota">
                         <img class="mascota-img" src="./img/perro_1.jpg" alt="Olivia">
                         <h3><span class="genero fem">​♀️​</span> Olivia</h3>
                     </div>
-                    <div class="mascota">
-                        <img class="mascota-img" src="./img/perro_2.jpg" alt="Goliat">
+                    <div id="perro-2" class="mascota">
+                        <img id='mascota' class="mascota-img" src="./img/perro_2.jpg" alt="Goliat">
                         <h3><span class="genero masc">♂️​</span>Goliat</h3>
                     </div>
-                    <div class="mascota">
+                    <div id="perro-3" class="mascota">
                         <img class="mascota-img" src="./img/perro_3.jpg" alt="Pompon">
                         <h3><span class="genero fem">​♀️​</span>Pompón</h3>
                     </div>
-                    <div class="mascota">
+                    <div id="perro-4"  class="mascota">
                         <img class="mascota-img" src="./img/perro_4.jpg" alt="Felipe">
                         <h3><span class="genero masc">♂️​</span>Felipe</h3>
                     </div>
-                    <div class="mascota">
+                    <div id="perro-5" class="mascota">
                         <img class="mascota-img" src="./img/perro_5.jpg" alt="Firulais">
                         <h3><span class="genero masc">♂️​</span>Firulais</h3>
                     </div>
@@ -45,23 +45,23 @@
             <div class="gatos">
                 <h2>GATOS</h2>
                 <div class="gatos-container">
-                    <div class="mascota">
-                        <img class="mascota-img" src="./img/gato_1.jpg" alt="Hamborgueso">
-                        <h3><span class="genero masc">♂️​</span>Hamborgueso</h3>
+                    <div id="gato-1" class="mascota">
+                        <img class="mascota-img" src="./img/gato_1.jpg" alt="Anvorgueso">
+                        <h3><span class="genero masc">♂️​</span>Anvorgueso</h3>
                     </div>
-                    <div class="mascota">
+                    <div id="gato-2" class="mascota">
                         <img class="mascota-img" src="./img/gato_2.jpg" alt="Bruno">
                         <h3><span class="genero masc">♂️​</span>Bruno</h3>
                     </div>
-                    <div class="mascota">
+                    <div id="gato-3" class="mascota">
                         <img class="mascota-img" src="./img/gato_3.jpg" alt="Mila">
                         <h3><span class="genero fem">​♀️​</span>Mila</h3>
                     </div>
-                    <div class="mascota">
+                    <div id="gato-4" class="mascota">
                         <img class="mascota-img" src="./img/gato_4.jpg" alt="Canela">
                         <h3><span class="genero fem">​♀️​</span>Canela</h3>
                     </div>
-                    <div class="mascota">
+                    <div id="gato-5" class="mascota">
                         <img class="mascota-img" src="./img/gato_5.jpg" alt="Princesa">
                         <h3><span class="genero fem">​♀️​</span>Princesa</h3>
                     </div>
@@ -72,35 +72,25 @@
                 <span class="carrito-img sacudir-carrito"></span>
                 <p>Firmar papeles</p>
             </a>
-    
-            <section id="modal-container" class="modal-container">
+        </section>
 
-                <div class="modal-info-container">
-                    <div class="title-mascota">
-                        <span id="modal-cerrar" class="modal-cerrar">x</span>
-                        <h2 id="modal-name">Olivia</h2>
+        <section id="modal" class="modal">
+            <div id='modal-content' class="modal-content">
+                <span id="modal-cerrar" class="modal-cerrar">x</span>
+                <div class="info-mascota">
+                    <div>
+                        <img id="modal-img" src="" alt="Imagen de la mascota">
+                        <ul id="modal-info" class="modal-info">
+                            <li id="modal-name" class="modal-list modal-nombre"></li>
+                            <li id="modal-genero" class="modal-list"></li>
+                            <li id="modal-edad" class="modal-list"></li>
+                            <li id="modal-esterilizado" class="modal-list"></li>
+                            <li id="modal-hobbies" class="modal-list"></li>
+                        </ul>
                     </div>
-                    <div class="info-mascota">
-                        <div>                        
-                            <img id="modal-img" src="./img/perro_1.jpg" alt="Imagen de la mascota">
-                            <ul id="modal-info" class="modal-info">
-                                <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut corrupti earum mollitia voluptatem debitis est corporis ducimus ad dolore explicabo. Est molestiae ut dolore et vitae esse minus voluptatem iure.</li>
-                                <li>Raza:</li>
-                                <li>Genero:</li>
-                                <li>Esterilizacion:</li>
-                                <li>Hobbies:</li>
-                            </ul>
-                        </div>
-                        <button id="modal-adoptar" class="modal-adoptar">Adoptar</button>
-                    </div>
+                    <button id="modal-adoptar" class="modal-adoptar">Adoptar</button>
                 </div>
-
-
-                </section>
-                </div>
-
-    
-
+            </div>
         </section>
     </main>
 
