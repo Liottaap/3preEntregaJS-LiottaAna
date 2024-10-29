@@ -13,38 +13,124 @@ const Mascotas = {
     'gato-4' : {nombre:'Canela', img:'./img/gato_4.jpg' ,genero:'hembra',edad:'adulta',hobbies: 'A este adorable peludo le gusta cantar y lamerse',esterilizado:'no esterilizada'},
     'gato-5' : {nombre:'Princesa', img:'./img/gato_5.jpg' ,genero:'hembra',edad:'adulta', hobbies:'A este adorable peludo le gusta lamerse y mirar con altanería',esterilizado:'esterilizada'},
 }
+// Array de lista de adopción
+let listaAdopcion = [];
 
-/* Modal */
+// Función para abrir un modal específico y cargar la información de la mascota si aplica
+function abrirModal(modalId, mascotaId = null) {
+    cerrarTodosLosModales();
 
-function abrirModal(mascotaId) {
-    const mascota = Mascotas[mascotaId];
-    document.getElementById('modal-name').innerText =  mascota.nombre;
-    document.getElementById('modal-img').src = mascota.img;
-    document.getElementById('modal-genero').innerText = `Genero: ${mascota.genero}`;
-    document.getElementById('modal-edad').innerText = `Edad: ${mascota.edad}`;
-    document.getElementById('modal-esterilizado').innerText = `Estado: ${mascota.esterilizado}`;
-    document.getElementById('modal-hobbies').innerText = `Hobbies: ${mascota.hobbies}`;
+    const modal = document.getElementById(modalId);
+    modal.style.display = 'flex'; 
 
-    // Mostrar el modal
-    document.getElementById('modal').style.display = 'flex';
+    if (mascotaId) {
+        // Si hay un ID de mascota, carga la información en el modal
+        const mascota = Mascotas[mascotaId];
+        document.getElementById('modal-name').innerText = mascota.nombre;
+        document.getElementById('modal-img').src = mascota.img;
+        document.getElementById('modal-genero').innerText = `Genero: ${mascota.genero}`;
+        document.getElementById('modal-edad').innerText = `Edad: ${mascota.edad}`;
+        document.getElementById('modal-esterilizado').innerText = `Estado: ${mascota.esterilizado}`;
+        document.getElementById('modal-hobbies').innerText = `Hobbies: ${mascota.hobbies}`;
+
+        // Botón de adopción
+        const adoptarButton = document.getElementById('modal-adoptar');
+        adoptarButton.dataset.mascotaId = mascotaId;
+        adoptarButton.innerText = "Adoptar";
+    }
 }
 
-//Evento para hacer click en el div de la mascota
+// Función para cerrar todos los modales
+function cerrarTodosLosModales() {
+    document.querySelectorAll('.modal').forEach(modal => {
+        modal.style.display = 'none';
+    });
+}
 
-const mascotasElements = document.querySelectorAll('.mascota');
-mascotasElements.forEach(mascota => {
-    mascota.addEventListener('click', () => abrirModal(mascota.id));
+// Función para agregar mascota al carrito de adopción
+function agregarCarrito() {
+    const adoptarButton = document.getElementById('modal-adoptar');
+    const mascotaId = adoptarButton.dataset.mascotaId;
+
+    if (!listaAdopcion.includes(mascotaId)) {
+        listaAdopcion.push(mascotaId);
+        adoptarButton.innerText = "Agregado";
+    } else {
+        alert("Esta mascota ya está en la lista de adopción.");
+    }
+}
+
+// Eventos para abrir el modal de información de la mascota al hacer clic
+document.querySelectorAll('.mascota').forEach(mascota => {
+    mascota.addEventListener('click', () => abrirModal('modal', mascota.id));
 });
 
+// Asigna el evento al botón "Adoptar" dentro del modal
+document.getElementById('modal-adoptar').addEventListener('click', agregarCarrito);
 
-// Función para cerrar el modal
-function cerrarModal() {
-    document.getElementById('modal').style.display = 'none';
+// Evento de clic al botón de cerrar en el modal de información
+document.getElementById('modal-cerrar').addEventListener('click', cerrarTodosLosModales);
+
+
+
+/* MODAL CARRITO / FIRMAR PAPELES */
+
+
+function mostrarCarrito() {
+    const listaContainer = document.querySelector('.lista-ad-container');
+    listaContainer.innerHTML = '';
+
+    listaAdopcion.forEach(mascotaId => {
+        const mascota = Mascotas[mascotaId];
+
+                // Crear elementos HTML para cada mascota
+                const li = document.createElement('li');
+                li.className = 'lista-ad';
+                
+                const img = document.createElement('img');
+                img.src = mascota.img;
+                img.alt = mascota.nombre;
+                img.id = 'modal-img-ad';
+        
+                const div = document.createElement('div');
+                
+                const h3 = document.createElement('h3');
+                h3.id = 'modal-name-ad';
+                h3.textContent = mascota.nombre;
+        
+                const eliminarLink = document.createElement('a');
+                eliminarLink.href = '#';
+                eliminarLink.textContent = 'Quitar mascota';
+                eliminarLink.id = 'modal-eliminar';
+
+        // Agrega el evento para eliminar la mascota de la lista
+        eliminarLink.addEventListener('click', () => eliminarDelCarrito(mascotaId));
+
+        // Estructura los elementos y los añade al contenedor
+        div.appendChild(h3);
+        div.appendChild(eliminarLink);
+        li.appendChild(img);
+        li.appendChild(div);
+        listaContainer.appendChild(li);
+    });
+        // Muestra el modal del carrito
+        abrirModal('modal-ca');
 }
 
 
-// Evento de clic al botón de cerrar
-document.getElementById('modal-cerrar').addEventListener('click', cerrarModal);
+// Función para eliminar una mascota del carrito
+function eliminarDelCarrito(mascotaId) {
+    listaAdopcion = listaAdopcion.filter(id => id !== mascotaId);
+    mostrarCarrito(); // Vuelve a mostrar el carrito actualizado
+}
+
+// Asigna el evento al botón o enlace que abre el modal del carrito
+document.getElementById('modal-abrir-ca').addEventListener('click', mostrarCarrito);
+
+//boton cerrar en carrito
+
+document.getElementById('modal-cerrar-ca').addEventListener('click', cerrarTodosLosModales);
+
 
 /* // Para almacenar las mascotas adoptadas
 let listaAdopcion = []; 
