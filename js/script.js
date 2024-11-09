@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    renderizarMascotas(Mascotas);  // Muestra todas las mascotas por defecto
+    renderizarMascotas(Mascotas);
 });
 
 let listaAdopcion = [];
@@ -21,7 +21,7 @@ function abrirModal(modalId, index = null) {
 
     if (index !== null) {
         // Si hay un índice, carga la información en el modal
-        const mascota = Mascotas[index]; // Cambié mascotaId por index
+        const mascota = Mascotas[index];
         document.getElementById('modal-name').innerText = mascota.nombre;
         document.getElementById('modal-img').src = mascota.img;
         document.getElementById('modal-genero').innerText = `Género: ${mascota.genero}`;
@@ -31,7 +31,7 @@ function abrirModal(modalId, index = null) {
 
         // Botón de adopción
         const adoptarButton = document.getElementById('modal-adoptar');
-        adoptarButton.dataset.mascotaId = index; // Aquí se asigna el índice en lugar de mascotaId
+        adoptarButton.dataset.mascotaId = index;
         adoptarButton.innerText = "Adoptar";
     }
 }
@@ -76,7 +76,7 @@ function renderizarMascotas(mascotas) {
     const perrosContainer = document.getElementById('perros-container');
     const gatosContainer = document.getElementById('gatos-container');
 
-    // Limpiar los contenedores para evitar duplicados
+    // Limpiar los contenedores
     perrosContainer.innerHTML = '';
     gatosContainer.innerHTML = '';
 
@@ -84,7 +84,7 @@ function renderizarMascotas(mascotas) {
     mascotas.forEach((mascota, index) => {
         const mascotaDiv = document.createElement('div');
         mascotaDiv.classList.add('mascota');
-        mascotaDiv.dataset.id = index; // Usamos el index aquí
+        mascotaDiv.dataset.id = index;
 
         mascotaDiv.innerHTML = `
             <img src="${mascota.img}" alt="${mascota.nombre}" class="mascota-img" onerror="this.src='images/default.jpg'">
@@ -98,7 +98,7 @@ function renderizarMascotas(mascotas) {
         }
     });
 
-    // Delegación de eventos para abrir el modal de información de la mascota
+    
     perrosContainer.addEventListener('click', (event) => {
         if (event.target.closest('.mascota')) {
             const mascotaDiv = event.target.closest('.mascota');
@@ -121,7 +121,7 @@ function agregarCarrito() {
     const adoptarButton = document.getElementById('modal-adoptar');
     const mascotaIndex = adoptarButton.dataset.mascotaId;
 
-    if (!listaAdopcion.includes(mascotaIndex)) { // Usamos el index
+    if (!listaAdopcion.includes(mascotaIndex)) {
         listaAdopcion.push(mascotaIndex);
         adoptarButton.innerText = "Agregado";
     } else {
@@ -138,8 +138,8 @@ function mostrarCarrito() {
     const listaContainer = document.querySelector('.lista-ad-container');
     listaContainer.innerHTML = '';
 
-    listaAdopcion.forEach(mascotaIndex => { // Usamos el index
-        const mascota = Mascotas[mascotaIndex]; // Accedemos a la mascota por el índice
+    listaAdopcion.forEach(mascotaIndex => {
+        const mascota = Mascotas[mascotaIndex]; 
 
         // Crear elementos HTML para cada mascota
         const li = document.createElement('li');
@@ -164,24 +164,24 @@ function mostrarCarrito() {
         // Agrega el evento para eliminar la mascota de la lista y evito que se actualice la pantalla por defecto a causa del form
         eliminarLink.addEventListener('click', (event) => {
             event.preventDefault()
-            eliminarDelCarrito(mascotaIndex); // Usamos el index aquí
+            eliminarDelCarrito(mascotaIndex);
         });
 
-        // Estructura los elementos y los añade al contenedor
+        
         div.appendChild(h3);
         div.appendChild(eliminarLink);
         li.appendChild(img);
         li.appendChild(div);
         listaContainer.appendChild(li);
     });
-    // Muestra el modal del carrito
+    
     abrirModal('modal-ca');
 }
 
 // Función para eliminar una mascota del carrito
 function eliminarDelCarrito(mascotaIndex) {
-    listaAdopcion = listaAdopcion.filter(index => index !== mascotaIndex); // Usamos el index aquí
-    mostrarCarrito(); // Vuelve a mostrar el carrito actualizado
+    listaAdopcion = listaAdopcion.filter(index => index !== mascotaIndex);
+    mostrarCarrito();
 }
 
 
@@ -212,7 +212,7 @@ firmarPapeles.addEventListener('click', () => {
 })
 
 function verificarCondiciones() {
-    // Verifica si el input tiene algún valor y si el checkbox está marcado
+    // Verifica si el input esta completadoy si el checkbox está marcado
     const todosLlenos = datosAdoptante.every(inputInf => {
         const input = Object.values(inputInf)[0];
         return input.value.trim() !== '';
@@ -222,7 +222,7 @@ function verificarCondiciones() {
         firmarPapeles.disabled = false;
 
     } else {
-        firmarPapeles.disabled = true; // Desactiva el botón
+        firmarPapeles.disabled = true;
     }
 }
 
@@ -241,3 +241,6 @@ document.getElementById('modal-abrir-ca').addEventListener('click', mostrarCarri
 document.getElementById('modal-cerrar-ca').addEventListener('click', cerrarTodosLosModales);
 document.getElementById('modal-cerrar').addEventListener('click', cerrarTodosLosModales);
 
+
+
+//agregar despues actualizacion de las mascotas que ya no estan disponibles para adoptar.
