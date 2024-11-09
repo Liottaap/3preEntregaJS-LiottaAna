@@ -5,7 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Adopción de mascotas</title>
     <link rel="stylesheet" href="./styles.css">
-    <script src="script.js" defer></script>
+    <script src="./js/mascotas.js" defer></script>
+    <script src="./js/script.js" defer></script>
+
 </head>
 <body>
     <header><h1>CENTRO DE MASCOTAS PATITAS CONTENTAS</h1></header>
@@ -15,56 +17,25 @@
             Muchas mascotas están esperando conseguir un hogar y nuevas oportunidades. 
             Afortunadamente contamos con 5 amigos gatunos y 5 perrunos disponibles para que les brindes esa oportunidad.</p>
     
-        <section class="mascotas-container">
+        <section class="mascotas-container" id="">
+            <div class="filtro">
+                <h3>Filtro</h3>
+                <button id="todos">Todos</button>
+                <button id="esterilizado">Esterilizado</button>
+                <button id="hembra">Hembra</button>
+                <button id="macho">Macho</button>
+            </div>
             <div class="perros">
                 <h2>PERROS</h2>
-                <div class="perros-container">
-                    <div id="perro-1" class="mascota">
-                        <img class="mascota-img" src="./img/perro_1.jpg" alt="Olivia">
-                        <h3><span class="genero fem">​♀️​</span> Olivia</h3>
-                    </div>
-                    <div id="perro-2" class="mascota">
-                        <img id='mascota' class="mascota-img" src="./img/perro_2.jpg" alt="Goliat">
-                        <h3><span class="genero masc">♂️​</span>Goliat</h3>
-                    </div>
-                    <div id="perro-3" class="mascota">
-                        <img class="mascota-img" src="./img/perro_3.jpg" alt="Pompon">
-                        <h3><span class="genero fem">​♀️​</span>Pompón</h3>
-                    </div>
-                    <div id="perro-4"  class="mascota">
-                        <img class="mascota-img" src="./img/perro_4.jpg" alt="Felipe">
-                        <h3><span class="genero masc">♂️​</span>Felipe</h3>
-                    </div>
-                    <div id="perro-5" class="mascota">
-                        <img class="mascota-img" src="./img/perro_5.jpg" alt="Firulais">
-                        <h3><span class="genero masc">♂️​</span>Firulais</h3>
-                    </div>
+                <div class="perros-container" id="perros-container">
+                    <!-- Lista de perros -->
                 </div>
             </div>
     
             <div class="gatos">
                 <h2>GATOS</h2>
-                <div class="gatos-container">
-                    <div id="gato-1" class="mascota">
-                        <img class="mascota-img" src="./img/gato_1.jpg" alt="Anvorgueso">
-                        <h3><span class="genero masc">♂️​</span>Anvorgueso</h3>
-                    </div>
-                    <div id="gato-2" class="mascota">
-                        <img class="mascota-img" src="./img/gato_2.jpg" alt="Bruno">
-                        <h3><span class="genero masc">♂️​</span>Bruno</h3>
-                    </div>
-                    <div id="gato-3" class="mascota">
-                        <img class="mascota-img" src="./img/gato_3.jpg" alt="Mila">
-                        <h3><span class="genero fem">​♀️​</span>Mila</h3>
-                    </div>
-                    <div id="gato-4" class="mascota">
-                        <img class="mascota-img" src="./img/gato_4.jpg" alt="Canela">
-                        <h3><span class="genero fem">​♀️​</span>Canela</h3>
-                    </div>
-                    <div id="gato-5" class="mascota">
-                        <img class="mascota-img" src="./img/gato_5.jpg" alt="Princesa">
-                        <h3><span class="genero fem">​♀️​</span>Princesa</h3>
-                    </div>
+                <div class="gatos-container" id="gatos-container">
+                    <!-- Lista de gatos -->
                 </div>
             </div>
     
@@ -121,7 +92,7 @@
                     </form>
                 </div>
                 <div class="terminos">
-                    <input type="checkbox">
+                    <input type="checkbox" id="checkbox-terminos">
                     <p>Me comprometo a brindarle a esta mascota un hogar seguro, alimentación, amor y todos los cuidados necesarios. Acepto también cumplir con sus chequeos veterinarios regulares, vacunación, y desparasitaciones para asegurar su bienestar y calidad de vida. Finalmente, acepto otorgar un seguimiento a la institución sobre el progreso y adaptación de la mascota en su nuevo hogar, por al menos 6 meses.</p>
                 </div>
                 <button id="modal-firmar" class="modal-adoptar">Firmar</button>
@@ -130,7 +101,7 @@
 
 
         <!-- MODAL MENSAJE FINAL -->
-        <section id="modal-mensaje-final" class="modal">
+<!--         <section id="modal-mensaje-final" class="modal">
             <div class="modal-content mensaje-final">
                 <div>
                     <h3 id="titulo-final">¡FELICIDADES!</h3>
@@ -142,7 +113,7 @@
                 <button id="modal-volver-inicio" class="modal-adoptar">Volver al inicio</button>
             </div>
 
-        </section>
+        </section> -->
     </main>
 
     <footer>
