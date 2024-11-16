@@ -244,3 +244,4 @@ document.getElementById('modal-cerrar').addEventListener('click', cerrarTodosLos
 
 
 //agregar despues actualizacion de las mascotas que ya no estan disponibles para adoptar.
+//añadir modal o libreria para el mensaje final y reemplazar el alert
