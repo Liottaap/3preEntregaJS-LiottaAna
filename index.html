@@ -17,7 +17,7 @@
                 <li><a href="#adoptar">Adoptá</a></li>
                 <li><a href="#faqs">FAQS</a></li>
                 <li><a href="#galeria">Amigos</a></li>
-                <li><a href="#redes">Redes</a></li>
+                <li><a href="#sobreNos">Sobre Nosotros</a></li>
             </ul>
             <div class="title-logo">
                 <p>Centro de adopciones</p>
@@ -64,6 +64,7 @@
                 <button id="macho">Macho</button>
             </div> -->
             <div class="perros">
+                <h2>¡Adoptá!</h2>
                 <div class="perros-container" id="perros-container">
                     <!-- Lista de perros -->
                 </div>
@@ -102,7 +103,7 @@
         </section>
 
         <!-- FAQS -->
-        <section id="faqs">
+        <section id="faqs" class="faqs">
             <h2>Preguntas Frecuentes</h2>
             <details>
                 <summary>¿Qué requisitos necesito para adoptar una mascota?</summary>
@@ -110,23 +111,80 @@
             </details>
             <details>
                 <summary>¿Las mascotas ya están vacunadas?</summary>
-                <p>Sí, todas las mascotas entregadas en adopción están vacunadas, desparasitadas y esterilizadas, salvo excepciones por edad o estado de salud.</p>
+                <p>Las mascotas se entregarán vacunadas, desapasitadas y esterilizadas(salvo excepciones por edad o estado de salud). Esos servicios serán abonados por el adoptante.</p>
             </details>
             <details>
                 <summary>¿Puedo adoptar si vivo en un departamento?</summary>
-                <p>¡Claro que sí! Muchas mascotas se adaptan perfectamente a vivir en departamentos, siempre que tengan ejercicio, compañía y cuidados adecuados.</p>
+                <p>¡Claro que sí! Siempre y cuando la persona encargada de su edificio esté de acuerdo. Muchas mascotas se adaptan perfectamente a vivir en departamentos, siempre que tengan ejercicio, compañía y cuidados adecuados.</p>
             </details>
             <details>
                 <summary>¿Qué hago si la mascota no se adapta?</summary>
                 <p>Te brindamos apoyo con consejos y técnicas para facilitar la adaptación. Si la situación persiste, trabajaremos contigo para buscar una solución que beneficie a la mascota.</p>
             </details>
+            <details>
+                <summary>¿Puedo devolver una mascota?</summary>
+                <p>En el peor de los casos, la mascota no se adaptará al ambiente pese al apoyo recibido por la institución. En ese caso, recibiremos la mascota nuevamente y se le buscará un nuevo hogar.</p>
+            </details>
         </section>
 
         <!-- Galeria amigos -->
-        <section id="galeria"></section>
+        <section id="galeria" class="galeria">
+            <h2>Album de Recuerdos</h2>
+            <div class="galeria-text">
+                <h3>Historias con final feliz</h3>
+                <p>En nuestro centro de adopción, cada mascota tiene una historia única y un sueño en común: <span>Encontrar un hogar lleno de amor</span>. 
+                </p>
+                <p>Gracias a personas generosas y comprometidas, muchos de nuestros perros y gatos han logrado comenzar una nueva etapa junto a familias que los aman y cuidan.
+                </p>
+                <p>Cada mirada tierna, cada cola moviéndose de alegría, y cada ronroneo suave nos recuerda que cada adopción marca la diferencia, no solo en la vida de una mascota, sino también en la de quienes deciden abrirles su corazón.</p>
+                <p>Nuestro trabajo continúa, y tú también puedes formar parte de este cambio. <span>Porque cada mascota merece un final feliz, como el de los amigos que verás aquí🐾</span>.
+                </p>
+                
+            </div>
+            <div class="galeria-slider" id="galeria-slider">
+                <!-- imágenes de mascotas adoptadas recientemente -->
+                <img class="slider-item" src="./img/amigos-1.jpg" alt="">
+                <img class="slider-item" src="./img/amigos-2.jpg" alt="">
+                <img class="slider-item" src="./img/amigos-3.jpg" alt="">
+                <img class="slider-item" src="./img/amigos-3.jpg" alt="">
+            </div>
+        </section>
 
-        <!-- Redes -->
-        <section id="redes"></section>
+        <!-- Sobre Nos -->
+        <section id="sobreNos" class="sobre-nosotros">
+            <h2>Sobre Nosotros</h2>
+            <ul class="redes">
+                <!-- Facebook -->
+                <li>
+                    <a href=""><svg width="100px" height="100px" viewBox="0 0 512 512" id="icons" xmlns="http://www.w3.org/2000/svg" fill="#bbddf7" stroke="#bbddf7"><g id="SVGRepo_bgCarrier" stroke-width="0"/><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" stroke="#CCCCCC" stroke-width="3.072"/><g id="SVGRepo_iconCarrier"><defs><style>.cls-1{stroke-miterlimit:10;}.cls-1,.cls-2{fill:none;stroke:#5093b1;stroke-width:7px;}.cls-2{stroke-linecap:round;stroke-linejoin:round;}</style></defs><path class="cls-1" d="M440.46,195.72c-4.65,13.85-14.67,27.17-24.36,40.05-6.68,8.87-15.21,20.09-19.53,28.84v-41.73c.29-.38,.58-.77,.87-1.15,22.91-30.45,28.6-43.24,14.85-54.37-5.01-4.06-5.79-11.41-1.73-16.42,4.05-5.01,11.4-5.78,16.41-1.73,14.98,12.13,19.64,28.2,13.49,46.51Z"/><path class="cls-1" d="M309.72,391.32h17.03c38.2,0,69.17-30.97,69.17-69.17v-119.18c0-30.74-20.05-56.79-47.77-65.8-1.75-.57-3.11-1.94-3.7-3.68l-11.81-34.97c-1.32-3.92-6.37-4.98-9.16-1.92l-32.04,35.09-.02,.02c-1.16,1.28-2.75,2.09-4.48,2.09h-59.52c-1.73,0-3.32-.81-4.48-2.09l-.02-.02-32.04-35.09c-2.79-3.06-7.84-2-9.16,1.92l-11.88,35.16c-.58,1.72-1.93,3.08-3.65,3.66-27.46,9.17-47.25,35.08-47.25,65.63v119.18c0,38.2,30.97,69.17,69.17,69.17h79.69"/><path class="cls-2" d="M309.72,391.32v-87.37h20.75l7.56-35.1h-28.31v-17.41c0-3.57,.94-6.45,2.83-8.63s4.33-3.26,7.33-3.26h17.24v-41.63h-23.48c-14.41,0-25.65,3.55-33.73,10.66-8.07,7.1-12.11,16.9-12.11,29.37v30.9h-14.8v35.1h14.8v87.37"/></g></svg></a>
+            Facebook</li>
+
+                <!-- Instagram -->
+                <li>
+                    <a href=""><svg width="100px" height="100px" viewBox="0 0 512 512" id="icons" xmlns="http://www.w3.org/2000/svg" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"/><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/><g id="SVGRepo_iconCarrier"><defs><style>.cls-1{fill:none;stroke:#5093b1;stroke-miterlimit:10;stroke-width:7px;}</style></defs><path class="cls-1" d="M437.81,182.26c-4.65,13.85-14.67,27.17-24.36,40.05-6.68,8.87-15.21,20.09-19.53,28.84v-41.73c.29-.38,.58-.77,.87-1.15,22.91-30.45,28.6-43.24,14.85-54.37-5.01-4.06-5.79-11.41-1.73-16.42,4.05-5.01,11.4-5.78,16.41-1.73,14.98,12.13,19.64,28.2,13.49,46.51Z"/><path class="cls-1" d="M393.92,194.23v119.18c0,38.2-30.97,69.17-69.17,69.17H186.11c-38.2,0-69.17-30.97-69.17-69.17v-119.18c0-30.55,19.79-56.46,47.25-65.63,1.72-.58,3.07-1.94,3.65-3.66l11.88-35.16c1.32-3.92,6.37-4.98,9.16-1.92l32.04,35.09,.02,.02c1.16,1.28,2.75,2.09,4.48,2.09h59.52c1.73,0,3.32-.81,4.48-2.09l.02-.02,32.04-35.09c2.79-3.06,7.84-2,9.16,1.92l11.81,34.97c.59,1.74,1.95,3.11,3.7,3.68,27.72,9.01,47.77,35.06,47.77,65.8Z"/><circle class="cls-1" cx="255.73" cy="257.65" r="52.04"/><circle class="cls-1" cx="334.51" cy="188.63" r="10.54"/></g></svg>
+                    </a>Instagram
+                </li>
+
+                <!-- Youtube -->
+                <li>
+                    <a href=""><svg width="100px" height="100px" viewBox="0 0 512 512" id="icons" xmlns="http://www.w3.org/2000/svg" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"/><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/><g id="SVGRepo_iconCarrier"> <defs><style>.cls-1{fill:none;stroke:#5093b1;stroke-miterlimit:10;stroke-width:7px;}</style></defs><path class="cls-1" d="M439.96,190.16c-4.12,14.02-13.61,27.72-22.8,40.96-3.31,4.78-6.77,9.77-9.75,14.53-.69-12.7-2.37-24.4-4.57-34.96,17.55-26.23,20.91-38.03,7.87-47.78-5.17-3.85-6.23-11.17-2.37-16.33,3.86-5.17,11.18-6.22,16.34-2.37,15.43,11.54,20.72,27.42,15.28,45.95Z"/><path class="cls-1" d="M407.41,245.65c-.69-12.7-2.37-24.4-4.57-34.96-2.68-12.79-6.11-23.91-9.49-33.07-3.06-8.3-9.85-14.64-18.32-17.17-5.43-1.61-11.22-3.2-17.38-4.73l-14.03-41.02c-1.42-4.16-6.83-5.22-9.72-1.91l-29.07,33.3c-13.14-1.53-27.12-2.51-41.87-2.7-17.73-.23-34.45,.7-49.96,2.4l-29.97-34.36c-2.89-3.31-8.3-2.25-9.72,1.91l-14.37,41.98c-6.55,1.63-12.71,3.31-18.44,5.01-8.74,2.56-15.68,9.23-18.61,17.87-6.73,19.78-13.48,47.81-13.27,81.64,.19,32.45,6.71,59.38,13.27,78.67,2.95,8.62,9.93,15.26,18.67,17.81,30.06,8.76,71.44,17.19,120.87,16.72,46.07-.42,84.78-8.45,113.52-16.85,8.53-2.5,15.36-8.89,18.44-17.23,7.13-19.42,14.62-47.73,14.37-82.28-.03-3.76-.14-7.44-.35-11.03Zm-113.17,17.5l-57.52,33.23c-3.82,2.19-8.59-.55-8.59-4.96v-66.43c0-4.41,4.77-7.15,8.59-4.96l57.52,33.23c3.82,2.19,3.82,7.7,0,9.89Z"/><path class="cls-1" d="M294.24,263.15l-57.52,33.23c-3.82,2.19-8.59-.55-8.59-4.96v-66.43c0-4.41,4.77-7.15,8.59-4.96l57.52,33.23c3.82,2.19,3.82,7.7,0,9.89Z"/><path class="cls-1" d="M294.24,263.15l-57.52,33.23c-3.82,2.19-8.59-.55-8.59-4.96v-66.43c0-4.41,4.77-7.15,8.59-4.96l57.52,33.23c3.82,2.19,3.82,7.7,0,9.89Z"/></g></svg></a>Youtube
+                </li>
+                <!-- Donar -->
+                <li>
+                    <a href="">
+                    <svg width="100px" height="100px" viewBox="0 0 512 512" id="icons" xmlns="http://www.w3.org/2000/svg" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"/><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/><g id="SVGRepo_iconCarrier"><defs><style>.cls-1{fill:none;stroke:#5093b1;stroke-miterlimit:10;stroke-width:7px;}</style></defs><path class="cls-1" d="M375.9,155.45c0-.24-4.26-3.73-4.26-3.96l4.18-58.35c.34-4.56-4.41-7.77-8.53-5.78l-52.62,25.56c-.16,.07-.31,.16-.46,.24-2.28,1.36-5.04,1.6-7.59,.83-14.75-4.4-30.45-6.77-46.76-6.77-18.38,0-36.01,3.01-52.35,8.55-3.04,1.02-6.27,.42-8.97-1.3-.2-.13-.4-.24-.62-.35l-52.62-25.54c-4.12-2.01-8.85,1.21-8.53,5.77l4.19,58.35c.02,.24,.05,.46,.09,.68,.56,3.04,.02,6.18-1.97,8.54-20.84,24.62-33.3,55.75-33.3,89.6,0,47.46,24.48,89.55,62.29,115.83-6.1,17.69-18.99,49.55-36.17,62.03-24.25,17.62,65.18,1.95,96.96-36.55,10.02,1.95,20.39,2.96,31,2.96,85.1,0,154.1-64.6,154.1-144.27,0-38.51-11.78-70.18-38.06-96.07Zm-47.25,113.93c0,3.37-2.74,6.11-6.13,6.11h-39.17v39.94c0,3.39-2.74,6.13-6.12,6.13h-34.71c-3.38,0-6.12-2.74-6.12-6.13v-39.94h-39.18c-3.38,0-6.12-2.74-6.12-6.11v-35.5c0-3.39,2.74-6.13,6.12-6.13h39.18v-39.94c0-3.37,2.74-6.11,6.12-6.11h34.71c3.38,0,6.12,2.74,6.12,6.11v39.94h39.17c3.39,0,6.13,2.74,6.13,6.13v35.5Z"/><path class="cls-1" d="M328.65,233.88v35.5c0,3.37-2.74,6.11-6.13,6.11h-39.17v39.94c0,3.39-2.74,6.13-6.12,6.13h-34.71c-3.38,0-6.12-2.74-6.12-6.13v-39.94h-39.18c-3.38,0-6.12-2.74-6.12-6.11v-35.5c0-3.39,2.74-6.13,6.12-6.13h39.18v-39.94c0-3.37,2.74-6.11,6.12-6.11h34.71c3.38,0,6.12,2.74,6.12,6.11v39.94h39.17c3.39,0,6.13,2.74,6.13,6.13Z"/></g></svg>
+                </a>Donar
+                </li>
+            </ul>
+            <div class="organizacion">
+                <img src="./img/sobre-nos.jpg" alt="">
+                <div>
+                    <h3>Anita la Huerfanita</h3>
+                    <p>Creadora del refugio, oriunda de San Juan, Argentina. </p>
+                    <p>Amante de los animales, con una misión clara: cada animal merece una vida digna, llena de cariño y respeto. <span>"Trabajamos incansablemente para ofrecerles no solo refugio, sino también atención médica, alimentación y, sobre todo, esperanza. Además, buscamos educar a nuestra comunidad sobre la importancia de la adopción responsable, el cuidado animal y la esterilización como herramientas clave para reducir el abandono."</span></p> 
+                </div>
+            </div>
+        </section>
         
 
         <!-- MODAL CARRITO  -->
@@ -163,10 +221,7 @@
             </div>
         </section>
 
-
     </main>
-
-
 
 
 
