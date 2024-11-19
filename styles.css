@@ -299,7 +299,7 @@ details p {
     color: var(--black);
 }
 
-
+/* ===== GALERIA ====== */
 .galeria {
     width: 100%;
     display: grid;
@@ -357,10 +357,12 @@ details p {
 
     object-fit: cover;
  }
- .galeria-item img{
+.galeria-item img {
     width: 100%;
-
- }
+    height: 100%; /* Asegúrate de ocupar todo el espacio disponible */
+    object-fit: COVER; /* Ajusta la imagen dentro del contenedor sin recortarla */
+    display: block;
+}
  /* Navegación del Slider */
  .galeria-nav {
     display: flex;
@@ -403,7 +405,8 @@ details p {
 /* ====== SOBRE NOSOTROS ===== */
 .sobre-nosotros{
     background-color: #e9e9e9;
-
+    
+    margin-top: 80px;
     height: auto;
     display: grid;
     padding: 0 30px 0 30px;
