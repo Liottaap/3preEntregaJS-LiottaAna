@@ -44,28 +44,18 @@ function cerrarTodosLosModales() {
 }
 
 // Filtros
-const botonEsterilizado = document.getElementById('esterilizado');
-const botonMacho = document.getElementById('macho');
-const botonHembra = document.getElementById('hembra');
-const botonTodos = document.getElementById('todos');
+const botonPerro = document.getElementById('perro');
+const botonGato = document.getElementById('gato');
+
 
 const mascotasArray = Mascotas;
-
-botonTodos.addEventListener('click', () => renderizarMascotas(mascotasArray));
-
-botonEsterilizado.addEventListener('click', () => {
-    const mascotasEsterilizadas = mascotasArray.filter(mascota => mascota.esterilizado === 'Esterilizado');
-    renderizarMascotas(mascotasEsterilizadas);
+botonGato.addEventListener('click',() =>{
+    const filtrarGatos = mascotasArray.filter(mascota => mascota.especie === 'gato');
+    renderizarMascotas(filtrarGatos);
 });
-
-botonMacho.addEventListener('click', () => {
-    const mascotasMachos = mascotasArray.filter(mascota => mascota.genero === 'macho');
-    renderizarMascotas(mascotasMachos);
-});
-
-botonHembra.addEventListener('click', () => {
-    const mascotasHembras = mascotasArray.filter(mascota => mascota.genero === 'hembra');
-    renderizarMascotas(mascotasHembras);
+botonPerro.addEventListener('click',() =>{
+    const filtrarPerros = mascotasArray.filter(mascota => mascota.especie === 'perro');
+    renderizarMascotas(filtrarPerros);
 });
 
 
@@ -73,12 +63,12 @@ botonHembra.addEventListener('click', () => {
 //// ==== RENDERIZAR MASCOTAS ==== ////
 
 function renderizarMascotas(mascotas) {
-    const perrosContainer = document.getElementById('perros-container');
-    const gatosContainer = document.getElementById('gatos-container');
+    const mascotasLista = document.getElementById('mascotasLista');
+
 
     // Limpiar los contenedores
-    perrosContainer.innerHTML = '';
-    gatosContainer.innerHTML = '';
+    mascotasLista.innerHTML = '';
+
 
     // Filtrar y agregar mascotas a los contenedores correspondientes
     mascotas.forEach((mascota, index) => {
@@ -90,24 +80,11 @@ function renderizarMascotas(mascotas) {
             <img src="${mascota.img}" alt="${mascota.nombre}" class="mascota-img" onerror="this.src='images/default.jpg'">
             <h3>${mascota.nombre}</h3>
         `;
-
-        if (mascota.especie === 'perro') {
-            perrosContainer.appendChild(mascotaDiv);
-        } else if (mascota.especie === 'gato') {
-            gatosContainer.appendChild(mascotaDiv);
-        }
+        mascotasLista.appendChild(mascotaDiv);
     });
 
     
-    perrosContainer.addEventListener('click', (event) => {
-        if (event.target.closest('.mascota')) {
-            const mascotaDiv = event.target.closest('.mascota');
-            const mascotaIndex = parseInt(mascotaDiv.dataset.id);
-            abrirModal('modal', mascotaIndex);
-        }
-    });
-
-    gatosContainer.addEventListener('click', (event) => {
+    mascotasLista.addEventListener('click', (event) => {
         if (event.target.closest('.mascota')) {
             const mascotaDiv = event.target.closest('.mascota');
             const mascotaIndex = parseInt(mascotaDiv.dataset.id);

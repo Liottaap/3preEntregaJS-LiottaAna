@@ -109,13 +109,9 @@ Mascotas.forEach((mascota, index) => {
     div.classList.add('mascota');
     div.dataset.id = index;
 
-    //No lo puse usar XD pero lo dejo aca para el futuro
-    const generoIcon = mascota.genero === 'hembra' ? '♀️' : '♂️';
-
     div.innerHTML = `
         <img src="${mascota.img}" alt="${mascota.nombre}" class="mascota-img">
         <h3>${mascota.nombre}</h3>
-        <p>${generoIcon} ${mascota.edad}</p>
     `;
     
     document.getElementById('perros-container').appendChild(div);
