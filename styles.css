@@ -13,7 +13,8 @@
 body {
     position: relative;
     background-color: var(--white);
-
+    margin-top: 15vh;
+    font-family: "Parkinsans", sans-serif;
 }
 
 h1, h2, h3, p, button, li {
@@ -46,13 +47,17 @@ a{
 /* ============================ HEADER ================== */
 
 header{
+    position: fixed;
+    top: 0;
     width: 100%;
     height: 15vh;
     display: flex;
     padding: 20px;
     background-color: var(--primary-color);
     align-items: center;
+    z-index: 1000;
 }
+
 header .nav{
     display: grid;
     width: 100%;
@@ -89,19 +94,28 @@ header .title-logo {
     width: 100%;
     height: 100%;
     display: flex;
+    font-family: "Barrio", system-ui;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
+    text-align: center;
 }
-header .title-logo p {
+
+header .title-logo h1 {
     color: var(--white);
-    font-size: 22px;
+    font-size: 24px;
+}
+header .title-logo h2 {
+    color: var(--white);
+    font-size: 24px;
 }
 header .account {
     grid-column: 3 / 4;
     width: 100%;
     height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
 }
 header .account .account-button{
     display: flex;
@@ -124,7 +138,7 @@ header .account .account-button{
 .inicio {
     position: relative; 
     width: 100%;
-    height: 80vh;
+    height: 100vh;
     overflow: hidden;
 }
 
@@ -180,7 +194,7 @@ header .account .account-button{
 }
 .filtro-radio {
     display: none;
-  }
+}
 .filtro-botones .filtro-btn-gato,
 .filtro-botones .filtro-btn-perro
 {
@@ -576,7 +590,7 @@ details p {
     grid-row: 1 / 2;
 }
 .galeria-texto{
-    padding: 50px;
+    padding: 0 25px;
     grid-column: 1 / 2;
     grid-row: 2 / 3;
     display: flex;
@@ -673,7 +687,6 @@ details p {
 
 .sobre-nosotros{
     background-color: #e9e9e9;
-    
     margin-top: 80px;
     height: auto;
     display: grid;
@@ -754,7 +767,6 @@ footer p {
     font-weight: 500;
 }
 
-
 /* ============================ MEDIA QUERIES ================== */
 /* ============================ MEDIA QUERIES ================== */
 
@@ -771,14 +783,6 @@ footer p {
     }
     h3{
         font-size: 10px;
-    }
-    .perros-container, .gatos-container{
-        gap: 15px;
-    }
-    .genero{
-        font-size: 12px;
-        width: 10px;
-        margin-right: 1px;
     }
     .checkbox{
         width: 10px;
