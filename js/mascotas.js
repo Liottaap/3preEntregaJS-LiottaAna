@@ -5,7 +5,7 @@ const Mascotas = [
         id: 1,
         especie: "perro",
         nombre: 'Olivia',
-        img:'./img/perro_1.jpg',
+        img:'',
         genero:'hembra',
         edad:'cachorro',
         hobbies: 'A este adorable peludo le gusta pasear, olfatear y perseguir al cartero',
@@ -15,7 +15,7 @@ const Mascotas = [
         id: 2,
         especie: "perro",
         nombre: 'Goliat',
-        img:'./img/perro_2.jpg',
+        img: '',
         genero:'macho',
         edad:'adulto', 
         hobbies:'A este adorable peludo le gusta aprender trucos y pasear',
@@ -25,7 +25,7 @@ const Mascotas = [
         id: 3,
         especie: "perro",
         nombre: 'Pompón',
-        img:'./img/perro_3.jpg',
+        img: '',
         genero:'hembra',edad:'cachorro', 
         hobbies:'A este adorable peludo le gusta jugar y saltar',
         esterilizado: 'Esterilizado' 
@@ -34,7 +34,7 @@ const Mascotas = [
         id: 4,
         especie: "perro",
         nombre: 'Felipe',
-        img:'./img/perro_4.jpg',
+        img: '',
         genero:'macho',
         edad:'anciano', 
         hobbies:'A este adorable peludo le gusta dormir y comer',
@@ -44,7 +44,7 @@ const Mascotas = [
         id: 5,
         especie: "perro",
         nombre: 'Firulais',
-        img:'./img/perro_5.jpg',
+        img: '',
         genero:'macho',
         edad:'anciano', 
         hobbies:'A este adorable peludo le gusta correr y cazar',
@@ -55,7 +55,7 @@ const Mascotas = [
         id: 6,
         especie: "gato",
         nombre:'Anvorgueso',
-        img:'./img/gato_1.jpg', 
+        img: '', 
         genero:'macho' ,
         edad:'cachorro',
         hobbies: 'A este adorable peludo le gusta comer y jugar con ovillos de lana', 
@@ -65,7 +65,7 @@ const Mascotas = [
         id: 7,
         especie: "gato",
         nombre:'Bruno',
-        img:'./img/gato_2.jpg',
+        img: '',
         genero:'macho', 
         edad:'cachorro',
         hobbies: 'A este adorable peludo le gusta dormir y mirar a la nada',
@@ -75,7 +75,7 @@ const Mascotas = [
         id: 8,
         especie: "gato",
         nombre:'Mila',
-        img:'./img/gato_3.jpg' ,
+        img: '',
         genero:'hembra',
         edad:'anciana', 
         hobbies:'A este adorable peludo le gusta dormir y recibir caricias',
@@ -85,7 +85,7 @@ const Mascotas = [
         id: 9,
         especie: "gato",
         nombre:'Canela', 
-        img:'./img/gato_4.jpg' ,
+        img: '',
         genero:'hembra',
         edad:'adulta',
         hobbies: 'A este adorable peludo le gusta cantar y lamerse',
@@ -95,7 +95,7 @@ const Mascotas = [
         id: 10,
         especie: "gato",
         nombre:'Princesa', 
-        img:'./img/gato_5.jpg' ,
+         img: '' ,
         genero:'hembra',
         edad:'adulta', 
         hobbies:'A este adorable peludo le gusta lamerse y mirar con altanería',
@@ -103,18 +103,3 @@ const Mascotas = [
     }
 ]
 
-// Genera elementos de mascotas en el HTML
-Mascotas.forEach((mascota, index) => {
-    const div = document.createElement('div');
-    div.classList.add('mascota');
-    div.dataset.id = index;
-
-    div.innerHTML = `
-        <img src="${mascota.img}" alt="${mascota.nombre}" class="mascota-img">
-        <h3>${mascota.nombre}</h3>
-    `;
-    
-    document.getElementById('perros-container').appendChild(div);
-    document.getElementById('gatos-container').appendChild(div);
-
-});

@@ -1,3 +1,4 @@
+
 *{
     margin: 0;
     padding: 0;
@@ -18,7 +19,6 @@ body {
 }
 
 h1, h2, h3, p, button, li {
-
     color: var(--black);
 }
 h1{
@@ -257,18 +257,24 @@ header .account .account-button{
     padding: 10px;
     border-radius: 8px;
     transition: transform 0.2s;
+    width: 250px;
+    height: 250px;
+    overflow: hidden;
 }
-
+.mascota-content {
+    display: flex;
+    flex-direction: column;
+}
 .mascota img {
-    width: 150px;
-    height: 150px;
+    width: 100%;
+    height: 90%;
     border-radius: 5px;
     border: 2px solid var(--black);
 }
 
 .mascota img:hover {
     border: 3px solid var(--secondary-color);
-    transform: translateY(-3px);
+
 }
 
 /* ========== SECCION 3 =============
@@ -291,14 +297,14 @@ header .account .account-button{
 
 .modal-content{
     width: 65%;
-    height: auto;
+    height: 85vh;
     margin: 0 auto;
     background-color: var(--white);
     border-radius: 30px;
 
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: 10% auto;
+    grid-template-rows: 10% 90%;
     justify-content: center;
     align-items: center;
     text-align: center;
@@ -315,8 +321,6 @@ header .account .account-button{
 .info-mascota{
     grid-row: 2 / 3;
     width: 100%;
-    margin-top: 15px;
-    margin-bottom: 15px;
 
     display: flex;
     flex-direction: column;
@@ -330,13 +334,14 @@ header .account .account-button{
 }
 .info-mascota div img {
     width: 50%;
-    height: auto;
+    max-height: 65vh;
     padding-left: 20px;
     border-radius: 30px;
 }
 
 .modal-info{
     width: 50%;
+    height: 65vh;
     padding: 0 10px;
 
     display: flex;
@@ -348,14 +353,14 @@ header .account .account-button{
 .modal-info li {
     align-self: flex-start;
     list-style: none;
-    font-size: 24px;
+    font-size: 20px;
     font-weight: 500;
 }
 .modal-info li:first-child {
     align-self: center;
-    margin-bottom: 30px;
+    margin: 30px 0;
     padding: 5px;
-    font-size: 50px;
+    font-size: 40px;
     letter-spacing: 10px;
     border-bottom: 2px solid var(--black);
 }
@@ -363,7 +368,6 @@ header .account .account-button{
     width: 30%;
     height: 40px;
     margin: 0 auto;
-    margin-bottom: 20px;
     border-radius: 20px;
     background-color: var(--white);
     border: 2px solid var(--black);
@@ -454,36 +458,37 @@ header .account .account-button{
     padding: 20px;
     box-sizing: border-box;
 
-    display: flex;
-    flex-direction: column;
-
+    display: grid;
+    grid-template-rows: 5% 60% 25% 10%;
+    align-content: center;
+    justify-content: center;
 }
 .modal-content-ad span {
+    grid-row: 1 / 2;
     margin-left: 30px;
     align-self: flex-start;
     text-align: center;
 
 }
-.modal-content-ad div {
+.modal-content-ad .lista-ad-container {
+    grid-row: 2 / 3;
     width: 100%;
-    display: flex;
-
-
-}
-.lista-ad-container{
-    width: 50%; 
-    max-height: 40vh; 
-    overflow-y: scroll; 
+    max-height: 70vh;
     padding: 15px;
-    margin-bottom: 20px; 
-    list-style: none;
-    gap: 20px; 
-    background-color: #f8f8f8; 
+    margin-bottom: 20px;
+    background-color: #f8f8f8;
     border-radius: 8px;
-
+    overflow-x: scroll;
+    display: flex
+;
+    flex-direction: column;
+    gap: 20px;
+    flex-wrap: wrap
 }
+
 .lista-ad-container li{
     display: flex;
+    gap: 20px;
     padding-bottom: 15px;
 }
 .lista-ad-container li div {
@@ -499,13 +504,13 @@ header .account .account-button{
     color: #b44c1c;
 }
 .lista-ad img{
-    width: 100px;
-    height: 100px;
+    width: 150px;
+    height: 150px;
     border-radius: 20px;
 }
 
 /* formulario adoptante */
-.modal-content-ad div form {
+/* .modal-content-ad div form {
     width: 50%;
     display: flex;
     flex-direction: column;
@@ -523,17 +528,25 @@ header .account .account-button{
 .modal-content-ad div form label input{
     text-align: left;
     width: 250px;
-}
+} */
 .terminos {
-    display: flex;
-    flex-direction: row;
-    gap: 10px;
-    align-items: flex-start;
-    text-align: left;
+    grid-row: 3 / 4;
+    width: 100%;
     padding: 10px;
     margin-top: 20px;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    text-align: left;
+
     overflow: hidden;
 }
+.terminos p{
+    font-size: 14px;
+}
+
 
 /* ======= SECCION 5 =============
 ============ FAQS ==========*/
@@ -763,9 +776,13 @@ footer{
     background-color: var(--primary-color);
 }
 footer p {
-    font-size: 20px;
+    font-size: 16px;
     font-weight: 500;
+    color: var(--black)
 }
+
+
+
 
 /* ============================ MEDIA QUERIES ================== */
 /* ============================ MEDIA QUERIES ================== */

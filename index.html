@@ -11,8 +11,13 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Parkinsans:wght@300..800&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <!-- Toastify -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
     <!-- CSS -->
     <link rel="stylesheet" href="./styles.css">
+    <!-- SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
     <title>Adopción de mascotas</title>
 </head>
 <body>
@@ -97,28 +102,9 @@
         <section id="modal-ca" class="modal">
             <div class="modal-content modal-content-ad">
                 <span id="modal-cerrar-ca" class="modal-cerrar">x</span>
-                <div>
-                    <ul class="lista-ad-container">
-                            <!-- lista de mascotas -->
-                    </ul>
-                    <form>
-                        <label for="nombre">Nombre
-                            <input type="text" id="nombre" name="nombre">
-                        </label>
-                        <label for="nombre">Apellido
-                            <input type="text" id="apellido" name="nombre">
-                        </label>
-                        <label for="nombre">E-mail
-                            <input type="email" id="email" name="email" placeholder="ejemplo@email.com">
-                        </label>
-                        <label for="nombre">Teléfono
-                            <input type="tel" name="tel" id="tel">
-                        </label>
-                        <label for="direccion">Direccion
-                            <input type="text" name="direccion" id="direccion">
-                        </label>
-                    </form>
-                </div>
+                <ul class="lista-ad-container" id="lista-ad">
+                    <!-- lista de mascotas -->
+                </ul>
                 <div class="terminos">
                     <input type="checkbox" id="checkbox-terminos">
                     <p>Me comprometo a brindarle a esta mascota un hogar seguro, alimentación, amor y todos los cuidados necesarios. Acepto también cumplir con sus chequeos veterinarios regulares, vacunación, y desparasitaciones para asegurar su bienestar y calidad de vida. Finalmente, acepto otorgar un seguimiento a la institución sobre el progreso y adaptación de la mascota en su nuevo hogar, por al menos 6 meses.</p>
@@ -216,7 +202,10 @@
                 </div>
             </div>
         </section>
-        
+    
+
+        <!-- Modal Regs -->
+        <section id="modal" class="modal modal-registro"></section>
     </main>
 
 
@@ -224,11 +213,11 @@
         <p>Página hecha por Ana Liotta</p>
     </footer>
 
-    
-
-    <script src="./js/mascotas.js" defer></script>
     <script src="./js/script.js" defer></script>
+    <script src="./js/mascotas.js"></script>
+
     <script src="./js/amigos.js"></script>
     <script src="./js/botones.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
 </body>
 </html>

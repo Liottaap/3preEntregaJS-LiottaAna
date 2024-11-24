@@ -1,0 +1,25 @@
+{
+  "name": "patitas-contentas",
+  "version": "1.0.0",
+  "description": "pagina web hecha para el curso de javascript de coderhouse",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Liottaap/EntregaFinal-JS-LiottaAna.git"
+  },
+  "author": "Ana Liotta <liotta.a.p@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Liottaap/EntregaFinal-JS-LiottaAna/issues"
+  },
+  "homepage": "https://github.com/Liottaap/EntregaFinal-JS-LiottaAna#readme",
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "sweetalert2": "^11.14.5",
+    "toastify-js": "^1.12.0"
+  }
+}
