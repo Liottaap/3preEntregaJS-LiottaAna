@@ -1,20 +1,32 @@
 document.addEventListener('DOMContentLoaded', async () => {
     await getData();
-
+    inicializarEventos();
 });
 
-// carrito
 const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
-//datos adoptante
-// const adoptante = JSON.parse(localStorage.getItem('adoptante')) || []
-
 let listaAdopcion = [];
 
-const guardarCarrito = () => {
-    localStorage.setItem('carrito', JSON.stringify(carrito))
+// Guardar carrito en localStorage
+const guardarCarrito = () => localStorage.setItem('carrito', JSON.stringify(carrito));
+
+// Función para inicializar eventos globales
+function inicializarEventos() {
+    document.getElementById('modal-adoptar').addEventListener('click', agregarCarrito);
+    document.getElementById('modal-abrir-ca').addEventListener('click', mostrarCarrito);
+    document.getElementById('modal-cerrar-ca').addEventListener('click', cerrarTodosLosModales);
+    document.getElementById('modal-cerrar').addEventListener('click', cerrarTodosLosModales);
+    document.getElementById('modal-firmar').addEventListener('click', firmarPapeles);
+    document.getElementById('checkbox-terminos').addEventListener('change', verificarCondiciones);
+    document.getElementById('btn-login').addEventListener('click', )
 }
 
+ const datosAdoptante = [
+/*      { nombreInput : document.getElementById('nombre')},
+     { apellidoInput : document.getElementById('apellido')}, */
+     { emailInput : document.getElementById('email')}
+ ]
 
+// Obtener datos de las APIs
 //The cat api
 const cat_key = 'live_6InE9GSfGzZY1AvZ2KIk0eiV19CUggQOl8XLxhEieaQEWxZ5SYRhXqWanSINmNVo'
 catApi = `https://api.thecatapi.com/v1/images/search?limit=10&&api_key=${cat_key}`
@@ -46,56 +58,37 @@ const getData = async () => {
     }
 };
 
+// Renderizar mascotas
+function renderizarMascotas(mascotasArray, contenedorId) {
+    const contenedor = document.getElementById(contenedorId);
+    contenedor.innerHTML = '';
 
-function renderizarMascotas(mascotasArray, mascotasLista) {
-    // Obtener el contenedor por su ID
-    const listadoMascotas = document.getElementById(mascotasLista);
-
-/*     // Verificar si el contenedor existe
-    if (!listadoMascotas) {
-        console.error(`Error: El contenedor con ID "${mascotasLista}" no existe en el DOM.`);
-        return;
-    } */
-
-    // Limpiar el contenido anterior
-    listadoMascotas.innerHTML = '';
-
-    // Recorrer el array de mascotas y crear los elementos correspondientes
     mascotasArray.forEach((mascota, index) => {
-        // Crear el contenedor principal de cada mascota
         const mascotaDiv = document.createElement('div');
-        mascotaDiv.classList.add('mascota'); // Agregar clase CSS
-        mascotaDiv.dataset.id = index; // Atributo data-id con el índice
+        mascotaDiv.classList.add('mascota');
+        mascotaDiv.dataset.id = index;
 
-        const mascotaContent = document.createElement('div');
-        mascotaContent.classList.add('mascota-content');
-        
-        // Crear la imagen y agregarle un evento
         const mascotaImg = document.createElement('img');
         mascotaImg.src = mascota.img;
         mascotaImg.alt = mascota.nombre;
         mascotaImg.classList.add('mascota-img');
-
-        // Evento para abrir el modal al hacer clic en la imagen
         mascotaImg.addEventListener('click', () => abrirModal('modal', index));
 
-        // Crear el nombre
         const mascotaNombre = document.createElement('h3');
         mascotaNombre.textContent = mascota.nombre;
 
-        // Agregar la imagen y el nombre al contenedor
         mascotaDiv.appendChild(mascotaImg);
         mascotaDiv.appendChild(mascotaNombre);
-
-        listadoMascotas.appendChild(mascotaDiv);
+        contenedor.appendChild(mascotaDiv);
     });
 }
+
 // Filtros
 const botonPerro = document.getElementById('perro');
 const botonGato = document.getElementById('gato');
- 
+const botonTodos = document.getElementById('todos')
 
- const mascotasArray = Mascotas;
+const mascotasArray = Mascotas;
 botonGato.addEventListener('click',() =>{
     const filtrarGatos = Mascotas.filter(mascota => mascota.especie === 'gato');
     renderizarMascotas(filtrarGatos, 'mascotasLista');
@@ -104,153 +97,81 @@ botonPerro.addEventListener('click',() =>{
     const filtrarPerros = Mascotas.filter(mascota => mascota.especie === 'perro');
     renderizarMascotas(filtrarPerros, 'mascotasLista');
 }); 
+botonTodos.addEventListener('click', () => {
+    renderizarMascotas(Mascotas, 'mascotasLista');
+});
 
 
-/* MODALES BOTONES */
-
-document.getElementById('modal-abrir-ca').addEventListener('click', mostrarCarrito);
-document.getElementById('modal-cerrar-ca').addEventListener('click', cerrarTodosLosModales);
-document.getElementById('modal-cerrar').addEventListener('click', cerrarTodosLosModales);
-
-function abrirModal(modalId, index = null) {
-    cerrarTodosLosModales();
-
-    const modal = document.getElementById(modalId);
-    modal.style.display = 'flex';
-
-    if (index !== null) {
-        // Si hay un índice, carga la información en el modal
-        const mascota = Mascotas[index];
-        document.getElementById('modal-name').innerText = mascota.nombre;
-        document.getElementById('modal-img').src = mascota.img;
-        document.getElementById('modal-genero').innerText = `Género: ${mascota.genero}`;
-        document.getElementById('modal-edad').innerText = `Edad: ${mascota.edad}`;
-        document.getElementById('modal-esterilizado').innerText = `Estado: ${mascota.esterilizado}`;
-        document.getElementById('modal-hobbies').innerText = `Hobbies: ${mascota.hobbies}`;
-
-        // Botón de adopción
-        const adoptarButton = document.getElementById('modal-adoptar');
-        adoptarButton.dataset.mascotaId = index;
-        adoptarButton.innerText = "Adoptar";
-    }
-}
-
-// Función para cerrar todos los modales
-function cerrarTodosLosModales() {
-    document.querySelectorAll('.modal').forEach(modal => {
-        modal.style.display = 'none';
-    });
-}
-
-
-
-// Función para agregar mascota al carrito de adopción
+// Agregar mascota al carrito
 function agregarCarrito() {
-    const adoptarButton = document.getElementById('modal-adoptar');
-    const mascotaIndex = adoptarButton.dataset.mascotaId;
+    const index = document.getElementById('modal-adoptar').dataset.mascotaId;
 
-    if (!listaAdopcion.includes(mascotaIndex)) {
-        listaAdopcion.push(mascotaIndex);
-        adoptarButton.innerText = "Agregado";
+    if (!listaAdopcion.includes(index)) {
+        listaAdopcion.push(index);
         Toastify({
-            text: "Agregado",
+            text: "Mascota agregada al carrito",
             duration: 3000,
-            destination: "https://github.com/apvarun/toastify-js",
-            newWindow: true,
-            close: true,
             gravity: "bottom",
-            position: "right", 
-            stopOnFocus: true, 
-            style: {
-              background: "rgb(28 196 28)",
-            },
-            onClick: function(){} // Callback after click
-          }).showToast(); 
+            style: { background: "rgb(28 196 28)" },
+        }).showToast();
     } else {
         Toastify({
-            text: "Esta mascota ya está agregada",
+            text: "Mascota ya está en el carrito",
             duration: 3000,
-            destination: "https://github.com/apvarun/toastify-js",
-            newWindow: true,
-            close: true,
-            gravity: "bottom", 
-            position: "right",
-            stopOnFocus: true,
-            style: {
-              background: "rgb(119 47 0)",
-            },
-            onClick: function(){} 
-          }).showToast(); 
+            gravity: "bottom",
+            style: { background: "rgb(119 47 0)" },
+        }).showToast();
     }
     guardarCarrito();
 }
 
-const adoptarBoton = document.getElementById('modal-adoptar').addEventListener('click', agregarCarrito);
-
-// Función para mostrar el carrito
+// Mostrar carrito
 function mostrarCarrito() {
-    const listaContainer = document.querySelector('.lista-ad-container');
+    const listaContainer = document.getElementById('lista-ad');
     listaContainer.innerHTML = '';
 
-    listaAdopcion.forEach(mascotaIndex => {
-        const mascota = Mascotas[mascotaIndex]; 
+    listaAdopcion.forEach((index) => {
+        const mascota = Mascotas[index];
 
-        // Crear elementos HTML para cada mascota
         const li = document.createElement('li');
         li.className = 'lista-ad';
 
         const img = document.createElement('img');
         img.src = mascota.img;
         img.alt = mascota.nombre;
-        img.id = 'modal-img-ad';
 
         const div = document.createElement('div');
-
         const h3 = document.createElement('h3');
-        h3.id = 'modal-name-ad';
         h3.textContent = mascota.nombre;
 
         const eliminarLink = document.createElement('a');
         eliminarLink.href = '#';
         eliminarLink.textContent = 'Quitar mascota';
-        eliminarLink.id = 'modal-eliminar';
-
-        // Agrega el evento para eliminar la mascota de la lista y evito que se actualice la pantalla por defecto a causa del form
-        eliminarLink.addEventListener('click', (event) => {
-            event.preventDefault()
-            eliminarDelCarrito(mascotaIndex);
+        eliminarLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            eliminarDelCarrito(index);
         });
 
-        
         div.appendChild(h3);
         div.appendChild(eliminarLink);
         li.appendChild(img);
         li.appendChild(div);
         listaContainer.appendChild(li);
     });
-    
+
     abrirModal('modal-ca');
 }
 
-// Función para eliminar una mascota del carrito
-function eliminarDelCarrito(mascotaIndex) {
-    listaAdopcion = listaAdopcion.filter(index => parseInt(index) !== parseInt(mascotaIndex));
+// Eliminar del carrito
+function eliminarDelCarrito(index) {
+    listaAdopcion = listaAdopcion.filter((id) => id !== index);
     mostrarCarrito();
 }
-
-
-
-
 
 ///// FIRMAR PAPELES
 const firmarPapeles = document.getElementById('modal-firmar')
 const checkbox = document.getElementById('checkbox-terminos')
-// const datosAdoptante = [
-//     { nombreInput : document.getElementById('nombre')},
-//     { apellidoInput : document.getElementById('apellido')},
-//     { emailInput : document.getElementById('email')},
-//     { telefonoInput : document.getElementById('tel')}
-// ]
+
 
 //Eventos
 checkbox.addEventListener('change', verificarCondiciones);
@@ -259,53 +180,85 @@ checkbox.addEventListener('change', verificarCondiciones);
     input.addEventListener('input', verificarCondiciones);
 }) */
 firmarPapeles.addEventListener('click', () => {
-    verificarCondiciones()
-    // guardarDatosAdoptante()
-    cerrarTodosLosModales()
-    Swal.fire({
-        title: 'FELICIDADES!',
-        text: 'Acabas de conseguir un nuevo amigo. ¡Recuerda alimentarlo y mimarlo! No lo olvides.',
-        icon: 'success',
-        confirmButtonText: 'cerrar',
-      });
-})
+    // Verificar si hay mascotas en el carrito y si las condiciones están verificadas
+    if (carrito.length > 0 && condicionesVerificadas()) {
+        cerrarTodosLosModales();
+        Swal.fire({
+            title: 'FELICIDADES!',
+            text: 'Acabas de conseguir un nuevo amigo. ¡Recuerda alimentarlo y mimarlo! No lo olvides.',
+            icon: 'success',
+            confirmButtonText: 'cerrar',
+        });
+    } else {
+        Toastify({
+            text: "Falta información en este carrito. Revisa si hay mascotas o no has firmado los términos",
+            duration: 3000,
+            gravity: "bottom",
+            style: { background: "rgb(119 47 0)" },
+        }).showToast();
+    }
+    // guardarDatosAdoptante();
+});
 
+// Función para verificar las condiciones
 function verificarCondiciones() {
-        if (checkbox.checked) {
-            firmarPapeles.disabled = false;
-    
-        } else {
-            firmarPapeles.disabled = true;
-        }
+    firmarPapeles.disabled = !checkbox.checked;
 }
 
-// //Guardar datos del adoptante
-// function guardarDatosAdoptante() {
-//     const datosAdoptante = {
-//         nombre: document.getElementById('nombre').value.trim(),
-//         apellido: document.getElementById('apellido').value.trim(),
-//         email: document.getElementById('email').value.trim(),
-//         telefono: document.getElementById('tel').value.trim(),
-//     }
-//     localStorage.setItem('adoptante', JSON.stringify(datosAdoptante))
-// }
-// Función para abrir un modal específico y cargar la información de la mascota si aplica
+// Función para verificar si las condiciones se cumplen
+function condicionesVerificadas() {
+    return checkbox.checked;
+}
 
-
-
-
-
-
-
-
-
-
-const contenedor = document.getElementById('lista-ad');
-
-contenedor.addEventListener('wheel', (e) => {
-    if (e.deltaY !== 0) {
-        // Si el desplazamiento es vertical (deltaY), lo convertimos en desplazamiento horizontal
-        contenedor.scrollLeft += e.deltaY; // Desplazamiento horizontal
-        e.preventDefault(); // Prevenir el comportamiento predeterminado de desplazamiento vertical
+// Abrir y cerrar modales
+// Función para abrir modales
+function abrirModal(modalId, index = null) {
+    cerrarTodosLosModales();
+    const modal = document.getElementById(modalId);
+    if (modal) {
+        modal.style.display = 'flex';
     }
+
+    if (index !== null) {
+        const mascota = Mascotas[index];
+        if (mascota) {
+            document.getElementById('modal-name').innerText = mascota.nombre;
+            document.getElementById('modal-img').src = mascota.img;
+            document.getElementById('modal-genero').innerText = `Género: ${mascota.genero}`;
+            document.getElementById('modal-edad').innerText = `Edad: ${mascota.edad}`;
+            document.getElementById('modal-esterilizado').innerText = `Estado: ${mascota.esterilizado}`;
+            document.getElementById('modal-hobbies').innerText = `Hobbies: ${mascota.hobbies}`;
+
+            // Botón de adopción
+            const adoptarButton = document.getElementById('modal-adoptar');
+            if (adoptarButton) {
+                adoptarButton.dataset.mascotaId = index;
+                adoptarButton.innerText = "Adoptar";
+            }
+        }
+    }
+}
+
+function cerrarTodosLosModales() {
+    document.querySelectorAll('.modal').forEach((modal) => {
+        modal.style.display = 'none';
+    });
+}
+
+//GALERIA
+let index = 0;
+
+document.getElementById('next-button').addEventListener('click', () => {
+    navigate(1);
 });
+
+function navigate(direction) {
+    const galeriaContainer = document.querySelector('.galeria-container');
+    const totalImagenes = document.querySelectorAll('.galeria-item').length;
+
+    index = (index + direction + totalImagenes) % totalImagenes;
+   const offset = -index * 100;
+
+    galeriaContainer.style.transform = `translateX(${offset}%)`;
+}
+

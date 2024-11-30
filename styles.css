@@ -26,9 +26,9 @@ h1{
     text-align: center;
 }
 h2{
+    margin-bottom: 5px;
     text-align: center;
     letter-spacing: 8px;
-    margin-bottom: 5px;
     font-size: 28px;
     color: var(--black);
 }
@@ -47,20 +47,22 @@ a{
 /* ============================ HEADER ================== */
 
 header{
-    position: fixed;
-    top: 0;
     width: 100%;
     height: 15vh;
-    display: flex;
     padding: 20px;
+    position: fixed;
+    top: 0;
     background-color: var(--primary-color);
+
+    display: flex;
     align-items: center;
     z-index: 1000;
 }
 
 header .nav{
-    display: grid;
     width: 100%;
+
+    display: grid;
     grid-template-columns: repeat(3,1fr);
     align-items: center;
     text-align: center;
@@ -69,19 +71,19 @@ header .nav{
 }
 header .nav ul {
     grid-column: 1 / 2;
+    width: 100%;
+    height: 100%;
+    padding: 15px;
+    list-style: none;
+    color: var(--white);
+
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 15px;
-    width: 100%;
-    height: 100%;
-    list-style: none;
-    color: var(--white);
-    padding: 15px;
 }
 header .nav ul li:hover{
-   border-bottom: 2px solid whitesmoke;
-
+    border-bottom: 2px solid whitesmoke;
 }
 header .nav ul a {
     color: var(--white);
@@ -93,12 +95,13 @@ header .title-logo {
     grid-column: 2 / 3;
     width: 100%;
     height: 100%;
-    display: flex;
     font-family: "Barrio", system-ui;
+    text-align: center;
+
+    display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    text-align: center;
 }
 
 header .title-logo h1 {
@@ -113,20 +116,42 @@ header .account {
     grid-column: 3 / 4;
     width: 100%;
     height: 100%;
+
     display: flex;
     align-items: center;
     justify-content: flex-end;
 }
-header .account .account-button{
-    display: flex;
-    justify-self: flex-end;
+.account-button {
     width: 50px;
     height: 50px;
+    position: relative;
+    background-color: #87d387;
     border: 2px solid var(--white);
     border-radius: 50px;
-    justify-content: center;
+
+    background-image: url('./img/iconos/bulldog-3.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+
+    display: flex;
     align-items: center;
-    background-color: #87d387;
+    justify-content: center;
+
+    cursor: pointer;
+}    
+.account-button p {
+    position: absolute;
+    bottom: -20px;
+    color: white;
+    font-weight: 500;
+    font-size: 16px;
+
+    display: none;
+}
+
+.account-button:hover p {
+    display: block; 
 }
 
 /* ============================ MAIN ================== */
@@ -152,46 +177,86 @@ header .account .account-button{
 }
 
 .inicio .filtro {
-    position: relative; 
+    position: relative;
     top: 50px;
     width: 30%;
-    height: 35vh;
-    margin: auto; 
+    height: 38vh;
+    margin: auto;
     border-radius: 20px;
     background-color: #5093b1;
 
     display: grid;
     align-items: center;
     grid-template-rows: 20% 55% 25%;
-
+    gap: 5px;
     z-index: 1;
 }
 
 .filtro p {
+    grid-row: 1 / 2;
+    padding: 5px;
+    font-size: 28px;
     color: var(--white);
     border-bottom: 1px solid aliceblue;
     text-align: center;
-    padding: 5px;
-    font-size: 28px;
 }
 .filtro-container {
     grid-row: 2 / 3;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
     width: 100%;
+    height: 100%;
 }
 
 .filtro-botones{
-    display: flex; 
-    height: 100px; 
-    justify-content: center;
-    align-items: center;
-    margin: 15px;
+    height: 100%; 
+
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    grid-template-rows: 60% 40%; 
+    align-content: center;
+    justify-items: center;
+    row-gap: 10px;
+}
+.btn-superior{
+    grid-row: 1 / 2;
+    grid-column: 1 / 3;
+    width: 90%;
+    height: 100%;
+    margin: 15px 15px 0;
     border-radius: 5px;
     border: 2px solid aliceblue;
 
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
+.btn-inferior {
+    grid-column: 1 / 3;
+    grid-row: 2 / 3;
+    width: 90%;
+    height: 70%;
+    border-radius: 5px;
+    border: 2px solid aliceblue;
+    margin: 15px;
+    color: whitesmoke;
+    cursor: pointer;
+
+    display: flex;
+}
+.filtro-btn-todos {
+    font-size: 45px;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+
+    display: flex;
+}
+.btn-buscar{
+    width: 90%;
+    margin: 0 auto;
+    background-color: aliceblue;
+    color: #3762cc;
+}
+
 .filtro-radio {
     display: none;
 }
@@ -199,45 +264,39 @@ header .account .account-button{
 .filtro-botones .filtro-btn-perro
 {
     width: 50%;
+
     display: flex;
     justify-content: center;
     align-items: center;
 }
 .filtro-radio:checked + .filtro-btn {
-    background-color: aliceblue;
     height: 100%;
     width: 100%;
+    background-color: aliceblue;
+    color:#3762cc;
+
     transition: all 0.8s ease-in-out;
 }
 
 .filtro-btn{
-    grid-row: 3 / 4;
-    width: 92%;
-    height: 35px;
-    padding: 5px;
-    margin: 15px;
     border-radius: 5px;
     cursor: pointer;
-
-    
     font-size: 20px;
     font-weight: 500;
     letter-spacing: 1.2px;
-    color: #3762cc;
 
-    text-align: center;
+    display: grid;
+    align-items: center;
+    justify-content: center;    
+    grid-row: 3 / 4;
 }
-.btn-buscar{
-    background-color: aliceblue;
-}
-
-
 
 /* ======= SECCION 2 =============
 =========== ADOPTAR ==========*/
 
 .mascotas-container {
     margin-top: 80px;
+
     display: flex;
     flex-direction: column;
     align-content: center;
@@ -246,6 +305,7 @@ header .account .account-button{
 }
 .mascotas-lista {
     margin: 0 auto;
+
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;
@@ -253,13 +313,13 @@ header .account .account-button{
 }
 
 .mascota {
-    text-align: center;
-    padding: 10px;
-    border-radius: 8px;
-    transition: transform 0.2s;
     width: 250px;
     height: 250px;
+    padding: 10px;
+    text-align: center;
+    border-radius: 8px;
     overflow: hidden;
+    transition: transform 0.2s;
 }
 .mascota-content {
     display: flex;
@@ -274,8 +334,8 @@ header .account .account-button{
 
 .mascota img:hover {
     border: 3px solid var(--secondary-color);
-
 }
+
 
 /* ========== SECCION 3 =============
 ======== MODAL INFORMACION ==========*/
@@ -287,12 +347,13 @@ header .account .account-button{
     width: 100%;
     height: 100%;
     background-color: rgba(128, 128, 128, 0.6);
-    z-index: 1000;
 
     display: none;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
+    z-index: 1000;
 }
 
 .modal-content{
@@ -326,7 +387,6 @@ header .account .account-button{
     flex-direction: column;
     justify-content: space-evenly;
     gap: 20px;
-
 }
 .info-mascota div {
     display: flex;
@@ -357,14 +417,17 @@ header .account .account-button{
     font-weight: 500;
 }
 .modal-info li:first-child {
-    align-self: center;
     margin: 30px 0;
     padding: 5px;
     font-size: 40px;
     letter-spacing: 10px;
     border-bottom: 2px solid var(--black);
+
+    align-self: center;
 }
 .modal-adoptar{
+    grid-column: 1 / 3;
+    grid-row: 4 / 5;
     width: 30%;
     height: 40px;
     margin: 0 auto;
@@ -373,6 +436,7 @@ header .account .account-button{
     border: 2px solid var(--black);
     text-align: center;
     font-size: 20px;
+    cursor: pointer;
 }
 .modal-adoptar:hover{
     background-color: var(--secondary-color);
@@ -415,6 +479,7 @@ header .account .account-button{
     width: 150px;
     height: 150px;
     padding-right: 50%;
+
     background-image: url('./img/iconos/btn-carrito.png');
     background-position: center;
     background-repeat: no-repeat;
@@ -430,11 +495,11 @@ header .account .account-button{
 
 .carrito p {
     position: absolute;
+    left: 65%;
     font-size: 20px;
     font-weight: 500;
-
-    left: 65%;
     opacity: 0;
+
     transition: all 0.5s ease;
     z-index: 0;
 }
@@ -454,17 +519,20 @@ header .account .account-button{
 .modal-content-ad {
     height: 85vh;
     max-height: 85vh;
+    padding: 0 20px;
     overflow: hidden;
-    padding: 20px;
     box-sizing: border-box;
+    background-color: whitesmoke;
 
     display: grid;
-    grid-template-rows: 5% 60% 25% 10%;
+    grid-template-rows: 6% 50% 30% 14%;
+    grid-template-columns: repeat(2, 1fr);
     align-content: center;
     justify-content: center;
 }
 .modal-content-ad span {
     grid-row: 1 / 2;
+    grid-column: 1 / 3;
     margin-left: 30px;
     align-self: flex-start;
     text-align: center;
@@ -472,89 +540,100 @@ header .account .account-button{
 }
 .modal-content-ad .lista-ad-container {
     grid-row: 2 / 3;
+    grid-column: 1 / 3;
     width: 100%;
-    max-height: 70vh;
-    padding: 15px;
-    margin-bottom: 20px;
-    background-color: #f8f8f8;
+    height: 100%;
+    max-height: 100%;
+    padding: 12px;
+    background-color: #cbe0e9;
     border-radius: 8px;
     overflow-x: scroll;
-    display: flex
-;
+
+
+    display: flex;
     flex-direction: column;
     gap: 20px;
-    flex-wrap: wrap
+    flex-wrap: wrap;
 }
 
 .lista-ad-container li{
+    padding-bottom: 15px;
+
     display: flex;
     gap: 20px;
-    padding-bottom: 15px;
 }
 .lista-ad-container li div {
+    text-align: left;
+
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
 .lista-ad-container li div h3{
-    font-size: 22px;
+    font-size: 20px;
 }
 .lista-ad-container li div a{
-    font-size: 16px;
+    font-size: 14px;
     color: #b44c1c;
 }
 .lista-ad img{
-    width: 150px;
-    height: 150px;
+    width: 130px;
+    height: 105px;
     border-radius: 20px;
 }
 
-/* formulario adoptante */
-/* .modal-content-ad div form {
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    align-items: self-end;
-    justify-content: center;
-    gap: 30px;
-
-}
-.modal-content-ad div form label{
-    display: flex;
-    justify-content: space-between;
-    gap: 10px;
-    width: 90%;
-}
-.modal-content-ad div form label input{
-    text-align: left;
-    width: 250px;
-} */
 .terminos {
     grid-row: 3 / 4;
+    grid-column: 1 / 2;
     width: 100%;
-    padding: 10px;
-    margin-top: 20px;
+    height: 100%;
+    padding: 0 10px;
+    text-align: left;
+    overflow: hidden;
 
     display: flex;
     flex-direction: row;
     align-items: center;
-    gap: 10px;
-    text-align: left;
-
-    overflow: hidden;
 }
 .terminos p{
-    font-size: 14px;
+    font-size: 11px;
 }
 
+.datos-adicionales{
+    height: 100%;
+    padding: 10px;
 
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+}
+.datos-adicionales h3{
+    margin-bottom: 10px;
+    border-bottom: 1px solid var(--primary-color);
+    color: var(--primary-color);
+    font-size: 18px;
+}
+.datos-adicionales label{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.datos-adicionales label input {
+    width: 250px;
+    background-color: whitesmoke;
+    border: 1px solid var(--primary-color);
+}
+.datos-adicionales label input:focus{
+    border: 3px solid var(--primary-color);
+    outline: none;
+}
 /* ======= SECCION 5 =============
 ============ FAQS ==========*/
 .faqs {
-    background-color: #e9e9e9;
+    width: 100%;
     margin: 80px auto;
     padding: 50px;
-    width: 100%;
+    background-color: #e9e9e9;
     font-family: Arial, sans-serif;
 }
 .faqs h2 {
@@ -564,15 +643,14 @@ header .account .account-button{
 details {
     width: 80%;
     margin: 15px auto;
+    padding: 15px;
     border: 1px solid #7ad3e6;
     border-radius: 10px;
-    padding: 15px;
-
 }
 
 summary {
     font-weight: 600;
-    font-size: large;
+    font-size: 16px;
     cursor: pointer;
     color: var(--black)
 }
@@ -582,49 +660,49 @@ details[open] {
     align-self: center;
 }
 
-details p {
-    margin: 10px 0 0;
-    color: var(--black);
-}
+
 
 /* ======= SECCION 6 =============
 =========== GALERIA ==========*/
 .galeria {
     width: 100%;
+    overflow: hidden;
+
     display: grid;
     grid-template-columns: 40% 60%;
     grid-template-rows: 10vh 80vh;
     justify-items: center;
     align-content: center;
-    overflow: hidden;
 }
 .galeria h2 {
     grid-column: 1 / 3;
     grid-row: 1 / 2;
 }
 .galeria-texto{
-    padding: 0 25px;
     grid-column: 1 / 2;
     grid-row: 2 / 3;
+    padding: 0 25px;
+
     display: flex;
     flex-direction: column;
-
     align-items: center;
 }
 .galeria-texto h3 {
+    margin-bottom: 30px;
     font-size: 28px;
     color: var(--primary-color);
-    margin-bottom: 30px;
     border-bottom: 1px solid var(--primary-color);
 }
 .galeria-texto p{
     margin-bottom: 16px;
 }
 .galeria-texto p span{
-    display: inline-block;
     font-weight: 600;
     font-size: 20px;
-    color: var(--primary-color)
+    color: var(--primary-color);
+
+    display: inline-block;
+
 }
 /* Estilo básico para el Slider*/
 .galeria-carrusel{
@@ -632,19 +710,20 @@ details p {
     grid-column: 2 / 3;
     width: 100%;
     height: 100%;
+
     position: relative; 
 }
  .galeria-container {
-    display: flex;
-    transition: transform 0.5s ease-in-out;
     width: 100%;
     height: 100%;
+
+    display: flex;
+    transition: transform 0.5s ease-in-out;
  }
  
  .galeria-item {
     min-width: 100%;
     object-fit: cover;
-
  }
 .galeria-item img {
     width: 100%;
@@ -652,19 +731,21 @@ details p {
     min-width: 100%;
     min-height: 100%;
     object-fit: COVER;
+
     display: block;
 }
  /* Navegación del Slider */
  .galeria-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     position: absolute; 
     top: 50%;
     left: 0;
-    right: 0;
+    right: 20px;
     transform: translateY(-50%);
     pointer-events: none; 
+
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
 }
 
 .nav-button {
@@ -675,20 +756,18 @@ details p {
     border-radius: 50%; 
     cursor: pointer;
     pointer-events: all;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
 }
 .nav-button:hover {
     background-color: var(--primary-color);
     }
-.prev-button {
-    background-image: url('./img/iconos/left-arrow-direction-svgrepo-com.svg');
-
-}
 
 .next-button {
     background-image: url('./img/iconos/right-arrow-upload-down-svgrepo-com.svg');
@@ -699,11 +778,12 @@ details p {
 ======== SOBRE NOSOTROS ==========*/
 
 .sobre-nosotros{
-    background-color: #e9e9e9;
-    margin-top: 80px;
     height: auto;
-    display: grid;
     padding: 0 30px 0 30px;
+    margin-top: 80px;
+    background-color: #e9e9e9;
+
+    display: grid;
     grid-template-columns: 30% 70%;
     grid-template-rows: 50px 500px;
 }
@@ -714,13 +794,14 @@ details p {
 .sobre-nosotros .redes{
     grid-column: 1 / 2;
     grid-row: 2 / 3;
-    display: flex;
 
+    display: flex;
     flex-direction: column;
     align-items: right;
 }
 .sobre-nosotros .redes li {
     width: 60%;
+
     display: flex;
     justify-content: center;
     align-items: center;
@@ -735,6 +816,7 @@ details p {
 .sobre-nosotros .organizacion{
     grid-column: 2 / 3;
     grid-row: 2 / 3;
+
     display: flex;
     flex-direction: column;
     align-items: right;
@@ -751,9 +833,9 @@ details p {
     align-items: right;
 }
 .sobre-nosotros .organizacion div h3{
+    margin-bottom: 5px;
     font-size: 24px;
     letter-spacing: 1.2px;
-    margin-bottom: 5px;
     color: var(--primary-color);
     border-bottom: 1px solid var(--primary-color);
 }
@@ -761,15 +843,18 @@ details p {
     margin-bottom: 10px;
 }
 
+// SECCION 8 - MODAL REGISTRO / LOGUEO
+.modal-content-re{
+    display: flex;
+}
+
 /* ============================ FOOTER ================== */
 /* ============================ FOOTER ================== */
 
 footer{
-    margin-top: 80px;
     width: 100%;
     height: 50px;
     margin-top: 50px;
-
     display: flex;
     align-items: center;
     justify-content: center;
@@ -782,27 +867,141 @@ footer p {
 }
 
 
+/* ============================ LOGIN ================== */
+/* ============================ LOGIN ================== */
+.body-login {
+    margin: 0;
+}
+.login-container {
+    padding: 0 20px;
+    height: 100vh;
+    background-color: #f9f9f9;
 
+    display: flex;
+    justify-content: center;
+}
+.login-container section{
+    width: 40%;
+    padding: 0 20px;
 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.login-container section .google{
+    position: relative;
+    width: 70%;
+    height: 45px;
+    margin-top: 50px;
+    margin: 50px auto;
+
+    border: 1px solid var(--black);
+    border-radius: 14px;
+    background-color: var(--white);
+    text-align: center;
+    font-size: 16px;
+    color: var(--black);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.login-container section .google img {
+    width: 95px;
+    padding: 0 30px;
+    position: absolute;
+    left: 10px;
+
+}
+.login-container section form {
+    height: auto;
+    margin-top: 30px;
+
+    display: flex;
+    flex-direction: column;
+
+}
+.login-container section span{
+    border-bottom: 1px solid black;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+.login-container section form label{
+    width: 300px;
+    height: 70px;
+    padding: 10px;
+    margin: 0 auto;
+    font-size: 14px;
+    text-align: start;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.login-container section form label input{
+    width: 300px;
+    height: 30px;
+    padding: 2px 10px;
+    border-radius: 5px;
+    border: 1px solid var(--black);
+    background-color: #bebec0;
+    font-size: 14px;
+    color: var(--black);
+}
+.login-container img {
+    width: 60%;
+}
+.login-container ul{
+    width: 100%;
+    height: 200px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+.login-container ul .btn-inicio-container {
+    width: 50%;
+    height: 40px;
+    border-radius: 5px;
+    border: 1px solid var(--black);
+
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+
+}
+.login-container ul .btn-inicio-container:hover{
+    background-color: #6bc76b;
+    border: #87d387;
+
+}
+.login-container ul .btn-inicio-container a{
+    width: 100%;
+    color: black;  
+
+}
+.login-container ul .btn-inicio-container a:hover{
+    color: var(--white);
+}
+.btn-restaurar {
+    font-size: 14px;
+}
+.btn-restaurar:hover{
+    text-decoration: dashed;
+}
 /* ============================ MEDIA QUERIES ================== */
 /* ============================ MEDIA QUERIES ================== */
 
 @media screen and (max-width: 768px) {
-    .mascota-img{
-        width: 65px;
-        height: 65px;
-    }
-    h1{
-        font-size: 22px;
-    }
-    h2{
-        font-size: 16px;
-    }
-    h3{
-        font-size: 10px;
-    }
-    .checkbox{
-        width: 10px;
-        height: 10px;
-    }
+
 }

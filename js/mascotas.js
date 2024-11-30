@@ -1,4 +1,3 @@
-/* Objeto mascotas */
 const Mascotas = [
     //Perros
     {

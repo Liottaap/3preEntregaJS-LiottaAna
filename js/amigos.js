@@ -32,8 +32,6 @@ const Amigos = [
 ]
 
 
-
-
 // Genera las imagenes de la galeria de Amigos
 Amigos.forEach((amigo, index) => {
     const div = document.createElement('div');
