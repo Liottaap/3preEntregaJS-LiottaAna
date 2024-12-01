@@ -102,3 +102,30 @@ const Mascotas = [
     }
 ]
 
+
+
+//// ==== RENDERIZAR MASCOTAS ==== ////
+
+function renderizarMascotas(mascotasArray, contenedorId) {
+    const contenedor = document.getElementById(contenedorId);
+    contenedor.innerHTML = '';
+
+    mascotasArray.forEach((mascota, index) => {
+        const mascotaDiv = document.createElement('div');
+        mascotaDiv.classList.add('mascota');
+        mascotaDiv.dataset.id = index;
+
+        const mascotaImg = document.createElement('img');
+        mascotaImg.src = mascota.img;
+        mascotaImg.alt = mascota.nombre;
+        mascotaImg.classList.add('mascota-img');
+        mascotaImg.addEventListener('click', () => abrirModal('modal', index));
+
+        const mascotaNombre = document.createElement('h3');
+        mascotaNombre.textContent = mascota.nombre;
+
+        mascotaDiv.appendChild(mascotaImg);
+        mascotaDiv.appendChild(mascotaNombre);
+        contenedor.appendChild(mascotaDiv);
+    });
+}

@@ -4,32 +4,42 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../styles.css">
+        <!-- font-family: "Barrio", system-ui;  -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Barrio&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
+        <!-- font-family: "Parkinsans", sans-serif; -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Parkinsans:wght@300..800&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+        <!-- Toastify -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastify-js/1.11.2/Toastify.min.css">
+
+
     <title>Inicia Sesión</title>
 </head>
 <body class="body-login">
     <main class="login-container">
         <section>
+            <h1>Centro de Adopciones <br> Patitas Contentas</h1>
             <a href="" class="google">
                 <img src="../img/iconos/google-icon.svg" alt="">
                 ingresar con Google
             </a>
-            <span></span>
             <form>
                 <label for="email" class="email">E-mail
                     <input type="email" id="email" name="email" placeholder="ejemplo@email.com">
                 </label>
                 <label for="password">Contraseña
-                    <input type="password" name="password" id="password" placeholder="***************">
+                    <input type="password" name="password" id="pass" placeholder="***************">
                 </label>
 
-                <ul>
-                    <li class="btn-inicio-container">
-                        <a href="../index.html" class="btn-inicio-sesion" id="btn-login">Iniciar Sesión</a>
-                    </li>
-                    <li>
-                        <a href="#" class="btn-restaurar">Olvidé mi contraseña</a>
-                    </li>
-                </ul>
+                <div class="registro-buttons">
+                    <button class="btn-inicio" id="btnRedir" type="button" onclick="guardarRegistro()">Iniciar Sesión</button>
+                    <a href="#" class="btn-restaurar">Olvidé mi contraseña</a>
+                </div>
+
+                
             </form>
         </section>
 
@@ -39,10 +49,7 @@
 
 
     <!-- scripts -->
-    <script src="./js/script.js" defer></script>
-    <script src="./js/mascotas.js"></script>
-    <script src="./js/amigos.js"></script>
-    <!-- toastify script -->
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script src="../js/usuario.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastify-js/1.11.2/Toastify.min.js"></script>
 </body>
 </html>
