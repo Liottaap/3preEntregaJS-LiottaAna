@@ -5,11 +5,13 @@ const guardarCarrito = () => localStorage.setItem('carrito', JSON.stringify(carr
 
 // Agregar mascota al carrito
 function agregarCarrito() {
+    console.log('Ejecutando agregarCarrito...');
     const index = document.getElementById('modal-adoptar').dataset.mascotaId;
 
-    if (!carrito.includes(index)) {
+    if (!carrito.includes(index)){
         carrito.push(index);
         console.log(carrito)
+        guardarCarrito();
         Toastify({
             text: "Mascota agregada al carrito",
             duration: 3000,
@@ -24,7 +26,7 @@ function agregarCarrito() {
             style: { background: "rgb(119 47 0)" },
         }).showToast();
     }
-    guardarCarrito();
+    console.log("Mascota agregada al carrito");
 }
 
 // Mostrar carrito
@@ -67,14 +69,12 @@ function mostrarCarrito() {
 // Eliminar del carrito
 function eliminarDelCarrito(index) {
     carrito = carrito.filter((id) => id !== index);
+    guardarCarrito()
     mostrarCarrito();
 }
 
 
-
-
 ///// FIRMAR PAPELES
-
 
 const checkbox = document.getElementById('checkbox-terminos');
 //Eventos
@@ -94,6 +94,12 @@ function firmarPapeles() {
             icon: 'success',
             confirmButtonText: 'Cerrar',
         });
+        
+        // Vaciar el carrito después de la adopción
+        carrito.length = 0; 
+        guardarCarrito(); 
+        verificarCondiciones();
+
 
     } else {
         Toastify({
@@ -105,25 +111,15 @@ function firmarPapeles() {
     }
     guardarCarrito()
 
+
 }
 
 // Función para verificar las condiciones
 function verificarCondiciones() {
-    const camposCompletos = infoCompletada();
-    btnFirmar.disabled = !(checkbox.checked && camposCompletos);
+    btnFirmar.disabled = !(checkbox.checked && carrito.length > 0);
 }
 
 // Función para verificar si las condiciones se cumplen
 function condicionesVerificadas() {
-    return checkbox.checked && infoCompletada();
-}
-
-//Para almacenar datos de los inputs
-function infoCompletada(){
-    const nombre = document.getElementById('nombre').value.trim();
-    const apellido = document.getElementById('apellido').value.trim();
-    const telefono = document.getElementById('tel').value.trim();
-    const direccion= document.getElementById('dir').value.trim();
-
-    return nombre !== '' && apellido !== '' && telefono !== '' && direccion !== '';
+    return checkbox.checked;
 }

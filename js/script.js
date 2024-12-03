@@ -104,8 +104,8 @@ function cerrarTodosLosModales() {
     });
 }
 
-//GALERIA
 
+//GALERIA
 
 let index = 0;
 

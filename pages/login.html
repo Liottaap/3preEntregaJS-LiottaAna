@@ -22,25 +22,69 @@
     <main class="login-container">
         <section>
             <h1>Centro de Adopciones <br> Patitas Contentas</h1>
-            <a href="" class="google">
-                <img src="../img/iconos/google-icon.svg" alt="">
-                ingresar con Google
-            </a>
-            <form>
-                <label for="email" class="email">E-mail
-                    <input type="email" id="email" name="email" placeholder="ejemplo@email.com">
-                </label>
-                <label for="password">Contraseña
-                    <input type="password" name="password" id="pass" placeholder="***************">
-                </label>
 
-                <div class="registro-buttons">
-                    <button class="btn-inicio" id="btnRedir" type="button" onclick="guardarRegistro()">Iniciar Sesión</button>
-                    <a href="#" class="btn-restaurar">Olvidé mi contraseña</a>
+
+            <!-- Controladores -->
+            <div class="tabs-container">
+                <a href="/" class="google inicio-buttons">
+                    <img src="../img/iconos/google-icon.svg" alt="">
+                    Ingresar con Google
+                </a>
+                <input type="radio" id="iniciar" name="form-toggle" checked hidden>
+                <input type="radio" id="registrar" name="form-toggle" hidden>
+
+                <div class="tabs">
+                    <label for="iniciar" class=" tab inicio-buttons">Iniciar Sesión</label>
+                    <label for="registrar" class="tab  inicio-buttons">Registrarse</label>
                 </div>
 
-                
-            </form>
+                <!-- Formularios -->
+                <div class="forms-container">
+                    <form class="iniciar-form">
+                        <label for="email" class="email">E-mail
+                            <input type="email" id="emailInicio" name="email">
+                        </label>
+                        <label for="password">Contraseña
+                            <input type="password" name="password" id="pass" placeholder="***************">
+                        </label>
+                        <div class="registro-buttons">
+                            <button class="btn-inicio" type="button" id="btnInicio">Iniciar Sesión</button>
+                            <a href="#" class="btn-restaurar">Olvidé mi contraseña</a>
+                        </div>
+                    </form>
+
+                    <form class="registrar-form">
+                        <label for="nombreApellido">Nombre y Apellido
+                            <input type="text" name="nombreApellido" id="nombreApellido">
+                        </label>
+                        <label for="email">Email
+                            <input type="text" name="email" id="emailR" placeholder="ejemplo@correo.com">
+                        </label>
+                        <label for="password">Contraseña
+                            <input type="password" name="password" placeholder="***************" id="passR">
+                        </label>
+                        <div class="form-row">
+                            <label for="generos" class="col-1">Género
+                                <select name="generos" id="genero-list">
+                                    <option value="femenino">Femenino</option>
+                                    <option value="masculino">Masculino</option>
+                                    <option value="otro">Otro</option>
+                                </select>
+                            </label>
+                            <label for="edad" class="col-2">Edad
+                                <input type="number" id="edad" name="edad" class="input-edad">
+                            </label>
+                        </div>
+                        <label for="tel">teléfono
+                            <input type="tel" name="tel" id="tel" placeholder="(264) 5123456">
+                        </label>
+                        <label for="dir">Dirección
+                            <input type="text" name="dir" id="dir">
+                        </label>
+                        <button class="btn-inicio btn-registrarse" id="btnReg">Registrarse</button>
+                    </form>
+                </div>
+            </div>
         </section>
 
         <img src="../img/bg-2.jpg" alt="">
@@ -51,5 +95,6 @@
     <!-- scripts -->
     <script src="../js/usuario.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastify-js/1.11.2/Toastify.min.js"></script>
+
 </body>
 </html>
