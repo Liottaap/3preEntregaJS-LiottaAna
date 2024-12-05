@@ -17,7 +17,7 @@ const getData = async () => {
         const gatos = await catRespuesta.json();
         const perros = await dogRespuesta.json();
 
-        // Asignación de imágenes a las mascotas
+        // le asigno las imagenes als  mascotas
         Mascotas.forEach((mascota) => {
             if (mascota.especie === 'gato' && gatos.length > 0) {
                 mascota.img = gatos.pop().url;
@@ -26,7 +26,7 @@ const getData = async () => {
             }
         });
 
-        // Renderizar las mascotas luego de obtener las imágenes
+        // Renderizar las mascotas luego de obtener las img
         renderizarMascotas(Mascotas, 'mascotasLista');
 
     } catch (e) {

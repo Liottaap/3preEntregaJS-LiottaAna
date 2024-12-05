@@ -12,9 +12,10 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Parkinsans:wght@300..800&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
-        <!-- Toastify -->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastify-js/1.11.2/Toastify.min.css">
-
+        <!-- toastify -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+        <!-- sweetAlert -->
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
 
     <title>Inicia Sesión</title>
 </head>
@@ -40,12 +41,12 @@
 
                 <!-- Formularios -->
                 <div class="forms-container">
-                    <form class="iniciar-form">
+                    <form class="iniciar-form" id="iniciar-form">
                         <label for="email" class="email">E-mail
-                            <input type="email" id="emailInicio" name="email">
+                            <input type="email" id="emailInicio" name="email" required>
                         </label>
                         <label for="password">Contraseña
-                            <input type="password" name="password" id="pass" placeholder="***************">
+                            <input type="password" name="password" id="pass" placeholder="***************" autocomplete="current-password" required>
                         </label>
                         <div class="registro-buttons">
                             <button class="btn-inicio" type="button" id="btnInicio">Iniciar Sesión</button>
@@ -53,15 +54,15 @@
                         </div>
                     </form>
 
-                    <form class="registrar-form">
+                    <form class="registrar-form" id="registrar-form">
                         <label for="nombreApellido">Nombre y Apellido
-                            <input type="text" name="nombreApellido" id="nombreApellido">
+                            <input type="text" name="nombreApellido" id="nombreApellido" required>
                         </label>
                         <label for="email">Email
-                            <input type="text" name="email" id="emailR" placeholder="ejemplo@correo.com">
+                            <input type="text" name="email" id="emailR" placeholder="ejemplo@correo.com" required>
                         </label>
                         <label for="password">Contraseña
-                            <input type="password" name="password" placeholder="***************" id="passR">
+                            <input type="password" name="password" id="passR" placeholder="***************" autocomplete="new-password" required>
                         </label>
                         <div class="form-row">
                             <label for="generos" class="col-1">Género
@@ -72,14 +73,14 @@
                                 </select>
                             </label>
                             <label for="edad" class="col-2">Edad
-                                <input type="number" id="edad" name="edad" class="input-edad">
+                                <input type="number" id="edad" name="edad" class="input-edad" required>
                             </label>
                         </div>
                         <label for="tel">teléfono
-                            <input type="tel" name="tel" id="tel" placeholder="(264) 5123456">
+                            <input type="tel" name="tel" id="tel" placeholder="(264) 5123456" required>
                         </label>
                         <label for="dir">Dirección
-                            <input type="text" name="dir" id="dir">
+                            <input type="text" name="dir" id="dir" required>
                         </label>
                         <button class="btn-inicio btn-registrarse" id="btnReg">Registrarse</button>
                     </form>
@@ -94,7 +95,12 @@
 
     <!-- scripts -->
     <script src="../js/usuario.js"></script>
+    <!-- toastify -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastify-js/1.11.2/Toastify.min.js"></script>
+    <!-- SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 
 </body>
 </html>

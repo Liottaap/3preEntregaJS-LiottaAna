@@ -1,41 +1,54 @@
-// Guardar usuario en localStorage
-const usuario = JSON.parse(localStorage.getItem('usuario')) || [];
-const guardarUsuario = () => localStorage.setItem('usuario', JSON.stringify(usuario));
-// Guardar usuario en localStorage (arreglo de usuarios)
+// Obtener el array de usuarios desde localStorage (o uno vacío si no hay datos)
+const obtenerUsuarios = () => JSON.parse(localStorage.getItem('usuarios')) || [];
+
+// Guardar el array de usuarios actualizado en localStorage
 const guardarUsuarios = (usuarios) => localStorage.setItem('usuarios', JSON.stringify(usuarios));
-
-
 
 // Escuchar el evento DOMContentLoaded para asegurar que el DOM está listo
 document.addEventListener('DOMContentLoaded', () => {
-    
-    // Escuchar el botón Iniciar Sesion
-    const iniciarSesion = document.getElementById('btnInicio');
-    if (iniciarSesion) {
-        iniciarSesion.addEventListener('click', () => {
+    console.log("DOM cargado y listo.");
+
+    // Evento para el botón de iniciar sesión
+    const btnInicio = document.getElementById('btnInicio');
+    if (btnInicio) {
+        btnInicio.addEventListener('click', (e) => {
+            e.preventDefault()
+
             const email = document.getElementById('emailInicio').value.trim();
             const pass = document.getElementById('pass').value.trim();
+            console.log("Intentando iniciar sesión con:", { email, pass });
 
-            const usuarios = JSON.parse(localStorage.getItem('usuario')) || [];
+            const usuarios = obtenerUsuarios();
+
             const usuarioValido = usuarios.find(
                 (usuario) => usuario.email === email && usuario.pass === pass
             );
 
             if (usuarioValido) {
-                console.log('Iniciaste sesión completamente');
-                localStorage.setItem('usuarioLogueado',JSON.stringify(usuarioValido));
-                paginaPrincipal();
+                console.log('Inicio de sesión exitoso:', usuarioValido);
+                localStorage.setItem('usuarioLogueado', JSON.stringify(usuarioValido));
+                Swal.fire({
+                    title: 'Inicio de sesión exitoso',
+                    text: 'Redirigiendo a la página principal.',
+                    icon: 'success',
+                    showConfirmButton: false, 
+                    timer: 3000,
+                });
+                setTimeout(() => {
+                    paginaPrincipal();
+                }, 3000); 
             } else {
                 alert('Error al iniciar sesión. Vuelve a intentarlo.');
             }
         });
     }
 
-    // Escuchar el botón de registro
-    const guardarRegistro = document.getElementById("btnReg");
-    if (guardarRegistro) {
-        guardarRegistro.addEventListener('click', () => {
-            // Obtener valores de los inputs
+    // Evento para el botón de registro
+    const btnReg = document.getElementById('btnReg');
+    if (btnReg) {
+        btnReg.addEventListener('click', (e) => {
+            e.preventDefault()
+
             const nombreCompleto = document.getElementById('nombreApellido').value.trim();
             const email = document.getElementById('emailR').value.trim();
             const pass = document.getElementById('passR').value.trim();
@@ -44,38 +57,39 @@ document.addEventListener('DOMContentLoaded', () => {
             const direccion = document.getElementById('dir').value.trim();
             const telefono = document.getElementById('tel').value.trim();
 
-            const usuarioExistente = usuario.find((u) => u.email === email);
+            console.log("Datos ingresados para registro:", {
+                nombreCompleto, email, pass, genero, edad, direccion, telefono
+            });
+
+            const usuarios = obtenerUsuarios();
+            const usuarioExistente = usuarios.find((u) => u.email === email);
+
             if (usuarioExistente) {
                 Toastify({
-                    text: "Este usuario ya existe. Inicia Sesión para continuar.",
+                    text: "Este usuario ya existe. Inicia sesión para continuar.",
                     duration: 3000,
                     gravity: "bottom",
-                    style: { background: "rgb(119 47 0)" },
+                    style: { background: "rgb(119 47 0)"},
                 }).showToast();
-            } else if (
-                nombreCompleto !== '' &&
-                email !== '' &&
-                pass !== '' &&
-                pass.length > 8 &&
-                genero !== '' &&
-                !isNaN(edad) &&
-                edad >= 18 &&
-                direccion !== '' &&
-                telefono !== ''
+                return;
+            }
+
+            if (
+                nombreCompleto && email && pass && pass.length > 8 &&
+                genero && !isNaN(edad) && edad >= 18 &&
+                direccion && telefono
             ) {
                 const datosRegistro = { nombreCompleto, email, pass, genero, edad, direccion, telefono };
+                usuarios.push(datosRegistro);
+                guardarUsuarios(usuarios);
 
-                // Guardar en el array de usuario y en localStorage
-                usuario.push(datosRegistro);
-                guardarUsuario();
-
+                console.log('Usuario registrado exitosamente:', datosRegistro);
                 Swal.fire({
                     title: 'REGISTRO EXITOSO',
                     text: 'Se te enviará la información necesaria a tu correo electrónico.',
                     icon: 'success',
                     confirmButtonText: 'Cerrar',
                 });
-
             } else {
                 Toastify({
                     text: "Información Incorrecta. No se ha podido registrar.",
@@ -86,11 +100,10 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
-
 });
-
 
 // Función para redirigir a otra página
 function paginaPrincipal() {
+    console.log("Redirigiendo a la página principal...");
     window.location.href = '../index.html';
 }
