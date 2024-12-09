@@ -917,7 +917,9 @@ footer p {
     border: 1px solid var(--black);
     border-radius: 14px;
 }
-
+.tabs-container{
+    width: 90%;
+}
 .tabs {
     display: flex;
 
